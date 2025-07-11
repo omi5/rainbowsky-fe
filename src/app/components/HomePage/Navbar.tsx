@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-10 border-b transition-all duration-300 ${
+      className={`fixed w-full z-50 border-b transition-all duration-300 ${
         scrolled
           ? "bg-white/80 backdrop-blur-sm border-gray-100"
           : "bg-transparent border-transparent"
