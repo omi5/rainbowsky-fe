@@ -5,6 +5,7 @@ import CustomButton from "../CustomComponent/CustomButton";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +83,10 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu button */}
-        <button className="md:hidden text-gray-700 hover:text-blue-600">
+        <button
+          className="md:hidden text-gray-700 hover:text-blue-600"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
           <svg
             className="w-6 h-6"
             fill="none"
@@ -100,29 +104,33 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu (hidden by default) */}
-      <div className="md:hidden hidden">
+      <div className={`md:hidden ${mobileMenuOpen ? "block" : "hidden"}`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
           <Link
             href="/"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+            onClick={() => setMobileMenuOpen(false)}
           >
             Home
           </Link>
           <Link
             href="/about"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+            onClick={() => setMobileMenuOpen(false)}
           >
             About Us
           </Link>
           <Link
             href="/contact"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+            onClick={() => setMobileMenuOpen(false)}
           >
             Contact Us
           </Link>
           <Link
             href="/careers"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+            onClick={() => setMobileMenuOpen(false)}
           >
             Careers
           </Link>
@@ -130,12 +138,14 @@ export default function Navbar() {
             <Link
               href="/login"
               className="block w-full px-3 py-2 rounded-md text-center text-base font-medium text-blue-600 hover:bg-blue-50"
+              onClick={() => setMobileMenuOpen(false)}
             >
               Login
             </Link>
             <Link
               href="/signup"
               className="block w-full px-3 py-2 rounded-md text-center text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+              onClick={() => setMobileMenuOpen(false)}
             >
               Sign Up
             </Link>

@@ -36,7 +36,7 @@ const CustomButton = ({
     <button
       type={type}
       disabled={isLoading}
-      className={`rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+      className={`rounded-lg cursor-pointer font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
         flex items-center justify-center ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
       {...props}
     >

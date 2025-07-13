@@ -1,209 +1,3 @@
-// "use client";
-// import React, { useState } from "react";
-// import { FaGoogle, FaLinkedinIn } from "react-icons/fa";
-// import InputLabel from "../CustomComponent/InputLabel";
-// import CustomInput from "../CustomComponent/CustomInput";
-// import CustomButton from "../CustomComponent/CustomButton";
-// import Link from "next/link";
-// import { useRouter } from "next/navigation";
-// import { toast } from "react-toastify";
-
-// interface LoginProps {
-//   route?: string;
-// }
-
-// const Login: React.FC<LoginProps> = ({ route }) => {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [emailLoading, setEmailLoading] = useState(false);
-//   const [googleLoading, setGoogleLoading] = useState(false);
-//   const [resetEmail, setResetEmail] = useState("");
-//   const [showResetModal, setShowResetModal] = useState(false);
-//   const router = useRouter();
-
-//   const handleLogin = async () => {
-//     setEmailLoading(true);
-//     try {
-//       const response = await fetch("/api/auth/login", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ email, password }),
-//       });
-
-//       const data = await response.json();
-
-//       if (response.ok) {
-//         toast.success("Logged in successfully");
-//         router.push("/dashboard");
-//       } else {
-//         toast.error(data.message || "Login failed");
-//       }
-//     } catch (err) {
-//       toast.error("Failed to login");
-//       console.error("Login error:", err);
-//     } finally {
-//       setEmailLoading(false);
-//     }
-//   };
-
-//   const handleResetPasswordModal = () => {
-//     setShowResetModal(true);
-//   };
-
-//   const handleResetPassword = async () => {
-//     if (!resetEmail) {
-//       toast.error("Please enter your email");
-//       return;
-//     }
-//     try {
-//       const response = await fetch("/api/auth/forgot-password", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ email: resetEmail }),
-//       });
-
-//       const data = await response.json();
-
-//       if (response.ok) {
-//         toast.success("Reset password link sent to your email");
-//         setShowResetModal(false);
-//       } else {
-//         toast.error(data.message || "Failed to send reset link");
-//       }
-//     } catch (err) {
-//       toast.error("Failed to send reset password email");
-//       console.error("Reset password error:", err);
-//     }
-//   };
-
-//   return (
-//     <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-//       <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-//         Log in to your account
-//       </h2>
-
-//       <div className="mb-6">
-//         <InputLabel text="Email" />
-//         <CustomInput
-//           type="email"
-//           placeholder="Enter your email"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//         />
-//       </div>
-
-//       <div className="mb-6">
-//         <InputLabel text="Password" />
-//         <CustomInput
-//           type="password"
-//           placeholder="Enter your password"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//         />
-//       </div>
-
-//       <CustomButton
-//         type="submit"
-//         size="block"
-//         variant="primary"
-//         className="font-medium mb-6"
-//         onClick={handleLogin}
-//         disabled={emailLoading}
-//       >
-//         {emailLoading ? "Logging in..." : "Log in"}
-//       </CustomButton>
-
-//       <div className="text-center text-sm text-gray-600 mb-6">
-//         Don't have an account?{" "}
-//         <Link
-//           href="/signup"
-//           className="text-blue-600 hover:underline font-medium"
-//         >
-//           Sign up
-//         </Link>
-//       </div>
-
-//       <div className="text-center text-sm text-gray-600 mb-8">
-//         Forgot your password?{" "}
-//         <button
-//           onClick={handleResetPasswordModal}
-//           className="text-blue-600 hover:underline font-medium"
-//         >
-//           Reset password
-//         </button>
-//       </div>
-
-//       {route !== "mentor-auth" && (
-//         <>
-//           <div className="relative mb-6">
-//             <div className="flex items-center justify-center">
-//               <span className="block w-1/2 border-t border-gray-200"></span>
-//               <span className="mx-4 text-gray-400 text-sm">OR</span>
-//               <span className="block w-1/2 border-t border-gray-200"></span>
-//             </div>
-//           </div>
-
-//           <div className="mb-6">
-//             <CustomButton
-//               type="button"
-//               size="block"
-//               icon={<FaGoogle className="text-red-500" />}
-//               variant="transparent"
-//               onClick={() => {}}
-//               disabled={googleLoading}
-//             >
-//               {googleLoading ? "Logging in..." : "Continue with Google"}
-//             </CustomButton>
-//           </div>
-//         </>
-//       )}
-
-//       {showResetModal && (
-//         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-//           <div className="bg-white p-6 rounded-lg max-w-md w-full">
-//             <h3 className="text-lg font-bold mb-4">Reset password</h3>
-//             <p className="text-gray-600 mb-4">
-//               Please enter your email address, and we'll send you a link to
-//               reset your password.
-//             </p>
-//             <CustomInput
-//               type="email"
-//               placeholder="your@email.com"
-//               value={resetEmail}
-//               onChange={(e) => setResetEmail(e.target.value)}
-//               className="mb-4"
-//             />
-//             <div className="flex justify-end space-x-3">
-//               <CustomButton
-//                 type="button"
-//                 size="medium"
-//                 variant="transparent"
-//                 onClick={() => setShowResetModal(false)}
-//               >
-//                 Cancel
-//               </CustomButton>
-//               <CustomButton
-//                 type="button"
-//                 size="medium"
-//                 variant="primary"
-//                 onClick={handleResetPassword}
-//               >
-//                 Send Link
-//               </CustomButton>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Login;
-
 "use client";
 import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
@@ -213,6 +7,10 @@ import CustomButton from "../CustomComponent/CustomButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { login } from "@/services/authService";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import apiClient from "@/lib/api/apiClient";
 
 interface LoginProps {
   route?: string;
@@ -224,35 +22,28 @@ const Login: React.FC<LoginProps> = ({ route }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
   const [showResetModal, setShowResetModal] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const router = useRouter();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsLoading(true);
+
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      await login({ email, password });
+      toast.success("Logged in successfully");
+      router.push("/dashboard");
+    } catch (error: any) {
+      toast.error(error.message);
 
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success("Logged in successfully");
-        router.push("/dashboard");
-      } else {
-        toast.error(data.message || "Login failed");
+      // Clear password field on error
+      if (error.message.includes("Invalid")) {
+        setPassword("");
       }
-    } catch (err) {
-      toast.error("Failed to login");
-      console.error("Login error:", err);
     } finally {
       setIsLoading(false);
     }
   };
-
   const handleResetPassword = async () => {
     if (!resetEmail) {
       toast.error("Please enter your email");
@@ -280,6 +71,91 @@ const Login: React.FC<LoginProps> = ({ route }) => {
       console.error("Reset password error:", err);
     }
   };
+  // Google login handler
+  // const loginWithGoogle = useGoogleLogin({
+  //   onSuccess: async (tokenResponse) => {
+  //     setGoogleLoading(true);
+  //     try {
+  //       // Get user info from Google
+  //       const userInfoResponse = await axios.get(
+  //         `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${tokenResponse.access_token}`
+  //       );
+
+  //       const userData = {
+  //         email: userInfoResponse.data.email,
+  //         familyName: userInfoResponse.data.family_name,
+  //         givenName: userInfoResponse.data.given_name,
+  //         name: userInfoResponse.data.name,
+  //         isSignup: false,
+  //       };
+
+  //       // Call your backend API using apiClient
+  //       const response = await apiClient.post("/users/google", userData);
+
+  //       // Save token if using localStorage
+  //       if (typeof window !== "undefined" && response.data.token) {
+  //         localStorage.setItem("authToken", response.data.token);
+  //       }
+
+  //       toast.success("Logged in successfully with Google");
+  //       router.push("/dashboard");
+  //     } catch (error: any) {
+  //       if (error.response) {
+  //         // Handle specific error responses from your backend
+  //         toast.error(error.response.data?.message || "Google login failed");
+  //       } else if (error.request) {
+  //         toast.error("No response from server. Please try again.");
+  //       } else {
+  //         toast.error("Google login failed");
+  //       }
+  //       console.error("Google login error:", error);
+  //     } finally {
+  //       setGoogleLoading(false);
+  //     }
+  //   },
+  //   onError: (error) => {
+  //     toast.error("Google login failed");
+  //     console.error("Google login failed:", error);
+  //     setGoogleLoading(false);
+  //   },
+  // });
+
+  const loginWithGoogle = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      setGoogleLoading(true);
+      console.log("Google token response:", tokenResponse);
+      try {
+        // Send the Google ID token to your backend
+        const response = await apiClient.post("/users/google", {
+          token: tokenResponse.access_token,
+        });
+
+        // Handle the response from your backend
+        if (typeof window !== "undefined" && response.data.token) {
+          localStorage.setItem("authToken", response.data.token);
+        }
+
+        toast.success("Logged in successfully with Google");
+        router.push("/dashboard");
+      } catch (error: any) {
+        if (error.response) {
+          toast.error(error.response.data?.message || "Google login failed");
+        } else if (error.request) {
+          toast.error("No response from server. Please try again.");
+        } else {
+          toast.error("Google login failed");
+        }
+        console.error("Google login error:", error);
+      } finally {
+        setGoogleLoading(false);
+      }
+    },
+    onError: (error) => {
+      toast.error("Google login failed");
+      console.error("Google login failed:", error);
+      setGoogleLoading(false);
+    },
+  });
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -296,8 +172,7 @@ const Login: React.FC<LoginProps> = ({ route }) => {
         <form
           className="mt-8 space-y-6"
           onSubmit={(e) => {
-            e.preventDefault();
-            handleLogin();
+            handleLogin(e);
           }}
         >
           <div className="space-y-4">
@@ -305,7 +180,7 @@ const Login: React.FC<LoginProps> = ({ route }) => {
               <InputLabel text="Email address" isRequired />
               <CustomInput
                 type="email"
-                placeholder="you@example.com"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -325,7 +200,7 @@ const Login: React.FC<LoginProps> = ({ route }) => {
               </div>
               <CustomInput
                 type="password"
-                placeholder="••••••••"
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -340,7 +215,7 @@ const Login: React.FC<LoginProps> = ({ route }) => {
               variant="primary"
               isLoading={isLoading}
             >
-              Sign in
+              Log in
             </CustomButton>
           </div>
         </form>
@@ -358,12 +233,17 @@ const Login: React.FC<LoginProps> = ({ route }) => {
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-3">
+            {/* <CustomButton type="button" variant="outline" icon={<FaGoogle />}>
+              Google
+            </CustomButton> */}
             <CustomButton
               type="button"
               variant="outline"
-              icon={<FaGoogle className="text-red-500" />}
+              icon={<FaGoogle />}
+              onClick={() => loginWithGoogle()}
+              isLoading={googleLoading}
             >
-              Google
+              {googleLoading ? "Signing in..." : "Google"}
             </CustomButton>
           </div>
         </div>

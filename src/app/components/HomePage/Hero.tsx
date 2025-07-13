@@ -2,7 +2,7 @@ import heroImage from "../../assets/Hero.jpg";
 export default function Hero() {
   return (
     <section
-      className="relative h-screen flex items-center justify-center bg-cover bg-center"
+      className="relative h-[700px] flex items-center justify-center bg-cover bg-center"
       //   style={{ backgroundImage: "url('../assets/Hero.jpg')" }}
     >
       {/* Overlay */}

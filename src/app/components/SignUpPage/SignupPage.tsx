@@ -1,219 +1,3 @@
-// "use client";
-// import React, { useState } from "react";
-// import InputLabel from "../CustomComponent/InputLabel";
-// import CustomInput from "../CustomComponent/CustomInput";
-// import CustomButton from "../CustomComponent/CustomButton";
-// import Link from "next/link";
-// import { useRouter } from "next/navigation";
-// import { toast } from "react-toastify";
-
-// const Signup = () => {
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     email: "",
-//     phone: "",
-//     password: "",
-//     confirmPassword: "",
-//     dob: "",
-//     gender: "",
-//   });
-//   const [loading, setLoading] = useState(false);
-//   const router = useRouter();
-
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-
-//     if (formData.password !== formData.confirmPassword) {
-//       toast.error("Passwords don't match");
-//       return;
-//     }
-
-//     setLoading(true);
-//     try {
-//       const response = await fetch("/api/auth/signup", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           name: formData.name,
-//           email: formData.email,
-//           phone: formData.phone,
-//           password: formData.password,
-//           dob: formData.dob,
-//           gender: formData.gender,
-//         }),
-//       });
-
-//       const data = await response.json();
-
-//       if (response.ok) {
-//         toast.success("Account created successfully!");
-//         router.push("/login");
-//       } else {
-//         toast.error(data.message || "Signup failed");
-//       }
-//     } catch (err) {
-//       toast.error("Failed to create account");
-//       console.error("Signup error:", err);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 max-w-md w-full">
-//       <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-//         Create your account
-//       </h2>
-
-//       <form onSubmit={handleSubmit}>
-//         <div className="mb-4">
-//           <InputLabel text="Full Name" isRequired />
-//           <CustomInput
-//             type="text"
-//             name="name"
-//             placeholder="Enter your full name"
-//             value={formData.name}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="mb-4">
-//           <InputLabel text="Email" isRequired />
-//           <CustomInput
-//             type="email"
-//             name="email"
-//             placeholder="Enter your email"
-//             value={formData.email}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="mb-4">
-//           <InputLabel text="Phone Number" isRequired />
-//           <CustomInput
-//             type="tel"
-//             name="phone"
-//             placeholder="Enter your phone number"
-//             value={formData.phone}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="mb-4">
-//           <InputLabel text="Date of Birth" isRequired />
-//           <CustomInput
-//             type="date"
-//             placeholder="Enter your date of birth"
-//             name="dob"
-//             value={formData.dob}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="mb-4">
-//           <InputLabel text="Gender" isRequired />
-//           <div className="flex space-x-4">
-//             <label className="flex items-center">
-//               <input
-//                 type="radio"
-//                 name="gender"
-//                 value="male"
-//                 checked={formData.gender === "male"}
-//                 onChange={handleChange}
-//                 className="mr-2"
-//                 required
-//               />
-//               Male
-//             </label>
-//             <label className="flex items-center">
-//               <input
-//                 type="radio"
-//                 name="gender"
-//                 value="female"
-//                 checked={formData.gender === "female"}
-//                 onChange={handleChange}
-//                 className="mr-2"
-//               />
-//               Female
-//             </label>
-//             <label className="flex items-center">
-//               <input
-//                 type="radio"
-//                 name="gender"
-//                 value="other"
-//                 checked={formData.gender === "other"}
-//                 onChange={handleChange}
-//                 className="mr-2"
-//               />
-//               Other
-//             </label>
-//           </div>
-//         </div>
-
-//         <div className="mb-4">
-//           <InputLabel text="Password" isRequired />
-//           <CustomInput
-//             type="password"
-//             name="password"
-//             placeholder="Create a password"
-//             value={formData.password}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="mb-6">
-//           <InputLabel text="Confirm Password" isRequired />
-//           <CustomInput
-//             type="password"
-//             name="confirmPassword"
-//             placeholder="Confirm your password"
-//             value={formData.confirmPassword}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <CustomButton
-//           type="submit"
-//           size="block"
-//           variant="primary"
-//           className="font-medium mb-6"
-//           disabled={loading}
-//         >
-//           {loading ? "Creating account..." : "Create Account"}
-//         </CustomButton>
-//       </form>
-
-//       <div className="text-center text-sm text-gray-600">
-//         Already have an account?{" "}
-//         <Link
-//           href="/login"
-//           className="text-blue-600 hover:underline font-medium"
-//         >
-//           Log in
-//         </Link>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Signup;
-
 "use client";
 import React, { useState } from "react";
 import InputLabel from "../CustomComponent/InputLabel";
@@ -222,6 +6,8 @@ import CustomButton from "../CustomComponent/CustomButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { signup } from "@/services/authService";
+import { validateSignupForm } from "@/utils/auth/validation";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -244,36 +30,73 @@ const Signup = () => {
     }));
   };
 
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   if (formData.password !== formData.confirmPassword) {
+  //     toast.error("Passwords don't match");
+  //     return;
+  //   }
+
+  //   setIsLoading(true);
+  //   try {
+  //     const { confirmPassword, ...payload } = formData;
+  //     const response = await fetch("/api/auth/signup", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(payload),
+  //     });
+
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       toast.success("Account created successfully!");
+  //       router.push("/login");
+  //     } else {
+  //       toast.error(data.message || "Signup failed");
+  //     }
+  //   } catch (err) {
+  //     toast.error("Failed to create account");
+  //     console.error("Signup error:", err);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords don't match");
+    // Client-side validation
+    const validationErrors = validateSignupForm(formData);
+    if (validationErrors.length > 0) {
+      validationErrors.forEach((error) => toast.error(error));
       return;
     }
 
     setIsLoading(true);
+
     try {
+      // Remove confirmPassword before sending to API
       const { confirmPassword, ...payload } = formData;
-      const response = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      await signup(payload);
 
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success("Account created successfully!");
-        router.push("/login");
+      toast.success("Account created successfully! Please login.");
+      router.push("/login");
+    } catch (error: any) {
+      if (error.errors) {
+        // Handle field-specific errors from API
+        Object.entries(error.errors).forEach(([field, messages]) => {
+          if (Array.isArray(messages)) {
+            messages.forEach((message: string) =>
+              toast.error(`${field}: ${message}`)
+            );
+          }
+        });
       } else {
-        toast.error(data.message || "Signup failed");
+        toast.error(error.message || "Registration failed. Please try again.");
       }
-    } catch (err) {
-      toast.error("Failed to create account");
-      console.error("Signup error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -298,7 +121,7 @@ const Signup = () => {
               <CustomInput
                 type="text"
                 name="name"
-                placeholder="John Doe"
+                placeholder="Enter your full name"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -310,7 +133,7 @@ const Signup = () => {
               <CustomInput
                 type="email"
                 name="email"
-                placeholder="you@example.com"
+                placeholder="Enter your email address"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -322,7 +145,7 @@ const Signup = () => {
               <CustomInput
                 type="tel"
                 name="phone"
-                placeholder="+1 (555) 123-4567"
+                placeholder="Enter your phone number"
                 value={formData.phone}
                 onChange={handleChange}
                 required
@@ -386,7 +209,7 @@ const Signup = () => {
               <CustomInput
                 type="password"
                 name="password"
-                placeholder="••••••••"
+                placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
                 required
@@ -401,7 +224,7 @@ const Signup = () => {
               <CustomInput
                 type="password"
                 name="confirmPassword"
-                placeholder="••••••••"
+                placeholder="Confirm your password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
@@ -427,7 +250,7 @@ const Signup = () => {
             href="/login"
             className="font-medium text-blue-600 hover:text-blue-500"
           >
-            Sign in
+            Log in
           </Link>
         </div>
       </div>
