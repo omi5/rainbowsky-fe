@@ -2,47 +2,50 @@ import JobCard from "./JobCard";
 
 const jobData = [
   {
-    id: 1,
-    image: "/placeholder.svg?height=200&width=300",
+    id: "1",
+    imageUrl: "/placeholder.svg?height=200&width=300",
     title: "WE'RE HIRING IN RUSSIA",
     description: "Looking for a sharp, driven and versatile Individual",
     location: "Moscow, Russia",
-    readMoreLink: "#",
   },
   {
-    id: 2,
-    image: "/placeholder.svg?height=200&width=300",
+    id: "2",
+    imageUrl: "/placeholder.svg?height=200&width=300",
     title: "URGENTLY REQUIRED For Domino's Pizza Restaurant in KSA",
     description:
       "Pizza Maker, Service Crew, Team Member, Assistant Waiter, Counter Staff",
     location: "Saudi Arabia",
-    readMoreLink: "#",
   },
   {
-    id: 3,
-    image: "/placeholder.svg?height=200&width=300",
+    id: "3",
+    imageUrl: "/placeholder.svg?height=200&width=300",
     title: "WE ARE HIRING! For QCON in Qatar (Oil & Gas Project)",
     description: "Multiple positions available in construction and engineering",
     location: "Qatar",
-    readMoreLink: "#",
   },
   {
-    id: 4,
-    image: "/placeholder.svg?height=200&width=300",
+    id: "4",
+    imageUrl: "/placeholder.svg?height=200&width=300",
     title: "URGENT REQUIREMENT For Bader Al Mulla & Bros Co. in Kuwait",
     description:
       "Welding Supervisor, Pipe Fabricator and other technical positions",
     location: "Kuwait",
-    readMoreLink: "#",
   },
   {
-    id: 5,
-    image: "/placeholder.svg?height=200&width=300",
+    id: "5",
+    imageUrl: "/placeholder.svg?height=200&width=300",
     title: "FREE RECRUITMENT POSITIONS",
     description:
       "MIG Welder, Structural Fabricator, Assistant Structural positions available",
     location: "Dubai, UAE",
-    readMoreLink: "#",
+  },
+  {
+    id: "6",
+    imageUrl: "/placeholder.svg?height=200&width=300",
+    title: "POSITIONS Available",
+    description:
+      "Camp Boss & Catering Supervisor, Trainee Camp Boss, Assistant Cook, South Indian Cook",
+    location: "Various Locations",
   },
 ];
 
@@ -65,11 +68,12 @@ export default function JobOpportunities() {
         {jobData.map((job) => (
           <JobCard
             key={job.id}
-            image={job.image}
+            id={job.id}
+            country={job.location}
+            imageUrl={job.imageUrl}
             title={job.title}
-            description={job.description}
+            details={job.description}
             location={job.location}
-            readMoreLink={job.readMoreLink}
           />
         ))}
       </div>
