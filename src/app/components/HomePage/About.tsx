@@ -1,6 +1,9 @@
+"use client";
+import { useRouter } from "next/navigation";
 import Counter from "./Counter";
 
 export default function About() {
+  const navigate = useRouter();
   return (
     <section id="about" className="py-20 bg-gray-50 max-w-7xl mx-auto">
       <div className="container mx-auto px-4">
@@ -22,7 +25,10 @@ export default function About() {
               modified and organised our manpower supply services to pioneer the
               dynamic needs of the global market.
             </p>
-            <button className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">
+            <button
+              className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+              onClick={() => navigate.push("/about")}
+            >
               READ MORE ►
             </button>
           </div>

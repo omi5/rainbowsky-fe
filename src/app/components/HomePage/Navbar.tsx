@@ -29,7 +29,7 @@ export default function Navbar() {
           href="/"
           className="text-2xl font-bold text-blue-800 hover:text-blue-700 transition-colors"
         >
-          RainbowSky
+          HR International Agency
         </Link>
 
         <div className="hidden md:flex items-center space-x-6">
@@ -55,7 +55,13 @@ export default function Navbar() {
             href="/careers"
             className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium"
           >
-            Careers
+            Manpower Recruitment
+          </Link>
+          <Link
+            href="/gallery"
+            className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium"
+          >
+            Gallery
           </Link>
 
           <div className="flex items-center space-x-4 ml-4">
@@ -132,7 +138,14 @@ export default function Navbar() {
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Careers
+            {/* Careers */}
+            Manpower Recruitment
+          </Link>
+          <Link
+            href="/gallery"
+            className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium"
+          >
+            Gallery
           </Link>
           <div className="pt-2 space-y-2">
             <Link

@@ -1,8 +1,8 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
+import certificationLogos from "@/utils/partnersImage/partnersImage";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -12,69 +12,6 @@ export default function Footer() {
     console.log("Newsletter signup:", email);
     setEmail("");
   };
-
-  const certificationLogos = [
-    {
-      id: 1,
-      name: "ISO Certification",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 2,
-      name: "Quality Assurance",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 3,
-      name: "Safety Standard",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 4,
-      name: "IAF Certification",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 5,
-      name: "Excellence Award",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 6,
-      name: "Industry Standard",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 7,
-      name: "Global Recognition",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 8,
-      name: "Professional Cert",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 9,
-      name: "Quality Mark",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 10,
-      name: "Service Excellence",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 11,
-      name: "Innovation Award",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-    {
-      id: 12,
-      name: "Best Practice",
-      image: "/placeholder.svg?height=60&width=60",
-    },
-  ];
 
   return (
     <footer className="bg-gray-800 text-gray-300 py-12">
@@ -93,9 +30,7 @@ export default function Footer() {
                   📍 Head Quarters:
                 </p>
                 <p className="text-sm leading-relaxed">
-                  Kamal Mansion, 4/58 A, Haji N. A. Azmi Marg,
-                  <br />
-                  Colaba, Mumbai, Maharashtra 400005
+                  House 76, rd 2a, block f, <br /> banani, dhaka
                 </p>
                 <div className="mt-2 text-xs text-gray-400">
                   <p>Co. Name - M/S Soundlines</p>
@@ -111,7 +46,7 @@ export default function Footer() {
                 </p>
                 <p className="text-sm flex items-center">
                   <span className="mr-2">✉️</span>
-                  Email: marketing@soundlinesgroup.com
+                  Email: H.R.Internationalrl1134@gmail.com
                 </p>
                 <p className="text-sm flex items-center">
                   <span className="mr-2">🌐</span>
@@ -263,10 +198,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Certifications Section */}
+          {/* Associated partners Section */}
           <div>
             <h3 className="text-white text-lg font-medium mb-6 flex items-center">
-              Certifications
+              Associated partners
               <span className="ml-2 text-blue-400">🏆</span>
             </h3>
 
@@ -290,7 +225,7 @@ export default function Footer() {
         {/* Bottom Border */}
         <div className="mt-12 pt-8 border-t border-gray-700 text-center">
           <p className="text-sm text-gray-400">
-            © 2024 Soundlines Group. All rights reserved.
+            © 2024 HR International Agency. All rights reserved.
           </p>
         </div>
       </div>

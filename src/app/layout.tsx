@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { Providers } from "./components/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RainbowSky",
-  description: "RainbowSky",
+  title: "HR International Agency",
+  description: "HR International Agency",
 };
 const ClientId =
   "976865510755-ocjo3q0jf15bc5g9s37k4pqaoknhpr5r.apps.googleusercontent.com";
@@ -28,14 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleOAuthProvider clientId={ClientId}>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </body>
-      </GoogleOAuthProvider>
-      <ToastContainer />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
