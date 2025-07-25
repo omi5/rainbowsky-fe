@@ -1,67 +1,30 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import certificationLogos from "@/utils/partnersImage/partnersImage";
 
-interface AwardData {
+interface CertificationLogo {
   id: number;
+  name: string;
   image: string;
-  title: string;
-  description?: string;
 }
 
 interface ArrowSliderProps {
-  awards?: AwardData[][];
+  logos?: CertificationLogo[][];
   autoSlideInterval?: number;
 }
 
 export default function ClientAwardsSlider({
-  awards,
+  logos,
   autoSlideInterval = 4000,
 }: ArrowSliderProps) {
-  const defaultAwards: AwardData[][] = [
-    [
-      {
-        id: 1,
-        image: "/placeholder.svg?height=300&width=250",
-        title: "SISBAN",
-        description: "Excellence Award 2023",
-      },
-      {
-        id: 2,
-        image: "/placeholder.svg?height=300&width=250",
-        title: "ABDAL",
-        description: "Innovation Award 2023",
-      },
-      {
-        id: 3,
-        image: "/placeholder.svg?height=300&width=250",
-        title: "AIMS INTERNATIONAL",
-        description: "Quality Award 2023",
-      },
-    ],
-    [
-      {
-        id: 4,
-        image: "/placeholder.svg?height=300&width=250",
-        title: "GLOBAL TECH",
-        description: "Technology Award 2023",
-      },
-      {
-        id: 5,
-        image: "/placeholder.svg?height=300&width=250",
-        title: "FUTURE CORP",
-        description: "Leadership Award 2023",
-      },
-      {
-        id: 6,
-        image: "/placeholder.svg?height=300&width=250",
-        title: "SMART SOLUTIONS",
-        description: "Innovation Award 2023",
-      },
-    ],
-  ];
+  // Split the certificationLogos into groups of 3 for sliding
+  const defaultLogos: CertificationLogo[][] = [];
+  for (let i = 0; i < certificationLogos.length; i += 3) {
+    defaultLogos.push(certificationLogos.slice(i, i + 3));
+  }
 
-  const slideData = awards || defaultAwards;
+  const slideData = logos || defaultLogos;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoSliding, setIsAutoSliding] = useState(true);
 
@@ -92,7 +55,7 @@ export default function ClientAwardsSlider({
         <div className="text-center mb-12">
           <span className="text-4xl font-sans-serif text-[#464646] tracking-[10px]">
             <span className="text-[#999999]">04</span>{" "}
-            <span className="text-[#FE0000]">/</span> Client Awards
+            <span className="text-[#FE0000]">/</span> Associated Partners
           </span>
         </div>
 
@@ -153,26 +116,22 @@ export default function ClientAwardsSlider({
               {slideData.map((slideGroup, groupIndex) => (
                 <div key={groupIndex} className="w-full flex-shrink-0">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-16">
-                    {slideGroup.map((award) => (
-                      <div key={award.id} className="group">
-                        <div className="bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                          <div className="relative">
+                    {slideGroup.map((logo) => (
+                      <div key={logo.id} className="group">
+                        <div className="bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col">
+                          {/* Image container - takes full width */}
+                          <div className="relative w-full aspect-square flex items-center justify-center bg-white p-4">
                             <img
-                              src={award.image || "/placeholder.svg"}
-                              alt={award.title}
-                              className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                              src={logo.image}
+                              alt={logo.name}
+                              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                           </div>
-                          <div className="p-6 text-center">
+                          {/* Company name - stays at bottom */}
+                          <div className="p-6 text-center mt-auto">
                             <h3 className="text-xl font-semibold text-white mb-2">
-                              {award.title}
+                              {logo.name}
                             </h3>
-                            {award.description && (
-                              <p className="text-gray-300 text-sm">
-                                {award.description}
-                              </p>
-                            )}
                           </div>
                         </div>
                       </div>

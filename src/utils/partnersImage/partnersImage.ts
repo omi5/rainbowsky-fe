@@ -11,47 +11,47 @@ import SAUDI from "../../../public/images/saudi.jpeg";
 const certificationLogos = [
   {
     id: 1,
-    name: "UP Certification",
+    name: "UNITED PLANTATIONS BERHAD",
     image: UP.src,
   },
   {
     id: 2,
-    name: "HRDK Accreditation",
+    name: "HRDK",
     image: HRDK.src,
   },
   {
     id: 3,
-    name: "MOON Standard",
+    name: "MOON CARWASH",
     image: MOON.src,
   },
   {
     id: 4,
-    name: "KUDU Compliance",
+    name: "KUDU",
     image: KUDU.src,
   },
   {
     id: 5,
-    name: "MCD Excellence",
+    name: "McDonald's",
     image: MCD.src,
   },
   {
     id: 6,
-    name: "TSM Certification",
+    name: "TSM ENER JI",
     image: TSM.src,
   },
   {
     id: 7,
-    name: "ALO Recognition",
+    name: "ALOTHMAN HOLDING",
     image: ALO.src,
   },
   {
     id: 8,
-    name: "AIM Standard",
+    name: "AI MAWARID",
     image: AIM.src,
   },
   {
     id: 9,
-    name: "SAUDI Quality Mark",
+    name: "SAUDI BINLADIN GROUP",
     image: SAUDI.src,
   },
 ];
