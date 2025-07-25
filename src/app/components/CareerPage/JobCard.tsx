@@ -1,88 +1,85 @@
-// interface JobCardProps {
-//   image: string;
-//   title: string;
-//   description: string;
-//   location: string;
-//   readMoreLink: string;
-// }
-
-// export default function JobCard({
-//   image,
-//   title,
-//   description,
-//   location,
-//   readMoreLink,
-// }: JobCardProps) {
-//   return (
-//     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-//       <div className="relative">
-//         <img
-//           src={image || "/placeholder.svg"}
-//           alt={title}
-//           className="w-full h-48 object-cover"
-//         />
-//       </div>
-//       <div className="p-4">
-//         <h3 className="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">
-//           {title}
-//         </h3>
-//         <p className="text-gray-600 text-xs mb-3 line-clamp-3">{description}</p>
-//         <div className="flex justify-between items-center">
-//           <span className="text-xs text-gray-500">{location}</span>
-//           <a
-//             href={readMoreLink}
-//             className="text-green-500 hover:text-green-600 text-xs font-medium transition-colors duration-200"
-//           >
-//             Read More »
-//           </a>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// components/JobCard/JobCard.tsx
 import Link from "next/link";
 import { Job } from "@/types/job";
 
-interface JobCardProps extends Job {
-  // Inherits all properties from Job interface
-}
+interface JobCardProps
+  extends Pick<
+    Job,
+    | "_id"
+    | "title"
+    | "details"
+    | "imageUrl"
+    | "country"
+    | "status"
+    | "workingHours"
+    | "salary"
+    | "currency"
+    | "facilities"
+  > {}
 
 export default function JobCard({
-  id,
+  _id,
   title,
   details,
   imageUrl,
   country,
-  location,
+  status,
+  workingHours,
+  salary,
+  currency,
+  facilities = [],
 }: JobCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-      <div className="relative">
-        <img
-          src={imageUrl || "/placeholder.svg"}
-          alt={title}
-          className="w-full h-48 object-cover"
-        />
-      </div>
-      <div className="p-4">
-        <h3 className="font-semibold text-gray-800 text-sm mb-2 line-clamp-2">
-          {title}
-        </h3>
-        <p className="text-gray-600 text-xs mb-3 line-clamp-3">
-          {details?.substring(0, 100)}...
-        </p>
-        <div className="flex justify-between items-center">
-          <span className="text-xs text-gray-500">{location || country}</span>
-          <Link
-            href={`/jobs/${id}`}
-            className="text-green-500 hover:text-green-600 text-xs font-medium transition-colors duration-200"
+    <Link
+      href={`/jobs/${_id}`}
+      className="group block transform transition-transform duration-300 hover:scale-105"
+    >
+      <div className="bg-white rounded-xl shadow-md overflow-hidden group-hover:shadow-xl">
+        <div className="relative">
+          <img
+            src={imageUrl || "/placeholder.svg"}
+            alt={title}
+            className="w-full h-44 object-cover"
+          />
+          <span
+            className={`absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded ${
+              status === "active"
+                ? "bg-green-100 text-green-800"
+                : "bg-gray-200 text-gray-600"
+            }`}
           >
-            Read More »
-          </Link>
+            {status}
+          </span>
+        </div>
+        <div className="p-4 space-y-2">
+          <h3 className="text-gray-900 font-semibold text-lg line-clamp-2">
+            {title}
+          </h3>
+          <p className="text-gray-600 text-sm line-clamp-2">{details}</p>
+          <div className="flex flex-wrap gap-2">
+            <span className="inline-block bg-blue-50 text-blue-700 text-xs font-medium px-2 py-1 rounded-full">
+              {country}
+            </span>
+            <span className="inline-block bg-yellow-50 text-yellow-800 text-xs font-medium px-2 py-1 rounded-full">
+              💰 {salary} {currency}
+            </span>
+            <span className="inline-block bg-purple-50 text-purple-800 text-xs font-medium px-2 py-1 rounded-full">
+              ⏰ {workingHours}h/wk
+            </span>
+          </div>
+          {facilities.length > 0 && (
+            <div className="flex flex-wrap gap-1">
+              {facilities.map((f) => (
+                <span
+                  key={f}
+                  className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full"
+                >
+                  {f}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

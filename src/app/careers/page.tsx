@@ -19,8 +19,8 @@ const AboutPage = () => {
         <HeroSection />
       </div>
       <JobOpportunitiesGlobal />
-      <JobOpportunities />
-      <CVSubmission />
+      {/* <JobOpportunities /> */}
+      {/* <CVSubmission /> */}
       <Footer />
     </main>
   );

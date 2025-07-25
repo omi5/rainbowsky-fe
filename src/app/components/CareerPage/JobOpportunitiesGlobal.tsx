@@ -1,81 +1,60 @@
+'use client'
+import { useEffect, useState } from "react";
+import { getJobs, PaginatedJobs } from "@/services/jobService";
+import { Job } from "@/types/job";
 import JobCard from "./JobCard";
 
-const jobData = [
-  {
-    id: "1",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "WE'RE HIRING IN RUSSIA",
-    description: "Looking for a sharp, driven and versatile Individual",
-    location: "Moscow, Russia",
-  },
-  {
-    id: "2",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "URGENTLY REQUIRED For Domino's Pizza Restaurant in KSA",
-    description:
-      "Pizza Maker, Service Crew, Team Member, Assistant Waiter, Counter Staff",
-    location: "Saudi Arabia",
-  },
-  {
-    id: "3",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "WE ARE HIRING! For QCON in Qatar (Oil & Gas Project)",
-    description: "Multiple positions available in construction and engineering",
-    location: "Qatar",
-  },
-  {
-    id: "4",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "URGENT REQUIREMENT For Bader Al Mulla & Bros Co. in Kuwait",
-    description:
-      "Welding Supervisor, Pipe Fabricator and other technical positions",
-    location: "Kuwait",
-  },
-  {
-    id: "5",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "FREE RECRUITMENT POSITIONS",
-    description:
-      "MIG Welder, Structural Fabricator, Assistant Structural positions available",
-    location: "Dubai, UAE",
-  },
-  {
-    id: "6",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "POSITIONS Available",
-    description:
-      "Camp Boss & Catering Supervisor, Trainee Camp Boss, Assistant Cook, South Indian Cook",
-    location: "Various Locations",
-  },
-];
-
 export default function JobOpportunitiesGlobal() {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const loadJobs = async (nextPage = 1) => {
+    setLoading(true);
+    try {
+      const { jobs: newJobs, totalPages } = await getJobs(nextPage, 8);
+      setJobs((prev) => (nextPage === 1 ? newJobs : [...prev, ...newJobs]));
+      setTotalPages(totalPages);
+      setPage(nextPage);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadJobs(1);
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12 bg-gray-50 min-h-screen">
-      <div className="text-center mb-12">
+      <header className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-light text-gray-800 mb-4">
           Find International work opportunities around the globe
         </h1>
         <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto">
-          Find your fit from the current international employment opportunities
-          for blue-collar & White collar job seekers
+          Blue‑ and white‑collar job openings from all over the world
         </p>
         <div className="w-16 h-0.5 bg-orange-400 mx-auto mt-6"></div>
-      </div>
+      </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {jobData.map((job) => (
-          <JobCard
-            key={job.id}
-            id={job.id}
-            country={job.location}
-            imageUrl={job.imageUrl}
-            title={job.title}
-            details={job.description}
-            location={job.location}
-          />
+        {jobs.map((job) => (
+          <JobCard key={job._id} {...job} />
         ))}
       </div>
+
+      {page < totalPages && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => loadJobs(page + 1)}
+            disabled={loading}
+            className="px-6 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition"
+          >
+            {loading ? "Loading…" : "Load More"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

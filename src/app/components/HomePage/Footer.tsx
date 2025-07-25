@@ -30,10 +30,10 @@ export default function Footer() {
                   📍 Head Quarters:
                 </p>
                 <p className="text-sm leading-relaxed">
-                  House 76, rd 2a, block f, <br /> banani, dhaka
+                  House 76, Road 2a, Block F, <br /> Banani, Dhaka, Bangladesh
                 </p>
                 <div className="mt-2 text-xs text-gray-400">
-                  <p>Co. Name - M/S Soundlines</p>
+                  <p>Co. Name - M/S HR International Agency</p>
                   <p>License no - B-0586/Mum/Per/1000+/5/5396/99</p>
                   <p>DOI: 27.10.2000 DOE: 26.7.2026</p>
                 </div>

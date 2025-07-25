@@ -15,15 +15,18 @@ export default function About() {
               <span className="text-[#FE0000]">/</span> ABOUT US
             </span>
             <p className="text-[#909090] text-lg tracking-[0.5px]  mb-8 mt-8">
-              Soundlines is a multi-award-winning overseas workforce management
-              company servicing clients globally across UAE, KSA, Kuwait, Qatar,
-              Bahrain, Egypt, India, Nepal & Bangladesh. Soundlines Group offers
-              comprehensive workforce solutions for all your international human
-              resource requirement. With more than two decades in business, we
-              have considerable experience and a knowledgeable team to assist
-              you with all your overseas staffing needs. Over the years, we have
-              modified and organised our manpower supply services to pioneer the
-              dynamic needs of the global market.
+              H.R. International Agency, bearing the recruiting license number
+              1134, is a well-established and trusted recruitment firm based in
+              Bangladesh with over 12 years of dedicated experience in the human
+              resource industry. Throughout their years of operation, the agency
+              has built a strong reputation for integrity, professionalism, and
+              reliability in the field of international recruitment. They have
+              successfully facilitated the movement of thousands of skilled,
+              semi-skilled, and unskilled workers to more than 20 diverse
+              countries, including Saudi Arabia, Qatar, Kuwait, Oman, Malaysia,
+              Korea, Singapore, Hungary, and Russia. Their extensive network and
+              expertise enable them to source talented candidates suitable for
+              various industries and employment sectors.
             </p>
             <button
               className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"

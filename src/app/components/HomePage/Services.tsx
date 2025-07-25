@@ -10,25 +10,25 @@ export default function Services() {
     {
       title: "Manpower Recruitment",
       description:
-        "We provide comprehensive workforce recruitment services, including Screening, Sourcing, On-Boarding & Employment contracting.",
+        "End‑to‑end workforce recruitment, including screening, sourcing, training, onboarding and employment contracting.",
       icon: hiringIcon,
     },
     {
-      title: "Employee Management",
+      title: "Visa Processing",
       description:
-        "We manage HR for global businesses, including Payroll, Banking/Juliette, Govt. Id., GOBJ, Medical Insurance, Driving License and more.",
+        "Comprehensive visa handling—from document prep to submission and follow‑up—for seamless overseas employment.",
       icon: experienceIcon,
     },
     {
-      title: "HR Administration",
+      title: "One Stop Solution Services for Overseas Workers",
       description:
-        "HR Policies, Employee Termination/Guidance/Planning, and Employee Database Maintenance are some of our HR administration services.",
+        "All‑in‑one support: pre‑departure training, visa & travel arrangements, post‑arrival assistance and legal advice.",
       icon: customerCareIcon,
     },
     {
-      title: "HR Services",
+      title: "Immigration Consultancy",
       description:
-        "We serve businesses with HR solutions, including HR Advisory & Consulting, Government Regulation, Change Management and more.",
+        "Expert guidance on visas, work permits, residency and citizenship to ensure a smooth, efficient immigration journey.",
       icon: managementIcon,
     },
   ];
@@ -52,15 +52,14 @@ export default function Services() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center">
-          <span className="text-4xl text-center font-sans-serif text-[#ffffff] tracking-[10px]">
-            <span className="text-[#fff]">02</span>{" "}
-            <span className="text-[#FE0000]">/</span> OUR SERVICES
+          <span className="text-4xl font-sans text-white tracking-[10px]">
+            02 <span className="text-red-600">/</span> OUR SERVICES
           </span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-12">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {services.map((service, idx) => (
             <ServiceCard
-              key={index}
+              key={idx}
               title={service.title}
               description={service.description}
               icon={service.icon.src}
