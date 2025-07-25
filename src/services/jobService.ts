@@ -17,3 +17,23 @@ export const getJobs = async (
   });
   return resp.data;
 };
+
+export const getJobById = async (id: string): Promise<Job> => {
+  const resp = await apiClient.get<Job>(`/jobs/${id}`);
+  return resp.data;
+};
+
+export const applyToJob = async (id: string): Promise<void> => {
+  const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  if (!token) throw new Error("Not authenticated");
+
+  await apiClient.post(
+    `/jobs/${id}/apply`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
