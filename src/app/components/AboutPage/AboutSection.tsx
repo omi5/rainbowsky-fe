@@ -17,68 +17,51 @@ export default function AboutUs() {
             {/* Right-aligned content container */}
             <div className="space-y-6">
               <p className="text-lg text-gray-700 leading-relaxed">
-                Soundlines was founded more than 20 years ago with a pioneering
-                spirit and lofty objective to navigate the changing human
-                resource landscape and create a positive business impact for our
-                clients by delivering unmatched{" "}
-                <span className="font-semibold text-blue-600">
-                  comprehensive HR services
-                </span>
-                .
+                H.R. International Agency, bearing the recruiting license number
+                1134, is a well-established and trusted recruitment firm based
+                in Bangladesh with over 12 years of dedicated experience in the
+                human resource industry. Throughout their years of operation,
+                the agency has built a strong reputation for integrity,
+                professionalism, and reliability in the field of international
+                recruitment. They have successfully facilitated the movement of
+                thousands of skilled, semi-skilled, and unskilled workers to
+                more than 20 diverse countries, including Saudi Arabia, Qatar,
+                Kuwait, Oman, Malaysia, Korea, Singapore, Hungary, and Russia.
+                Their extensive network and expertise enable them to source
+                talented candidates suitable for various industries and
+                employment sectors.
               </p>
 
               <p className="text-lg text-gray-700 leading-relaxed">
-                In pursuit of our ambition to become the one-stop solution for
-                all your{" "}
-                <span className="font-semibold text-blue-600">
-                  human resources and manpower needs
-                </span>
-                , we have undergone remarkable development over the past few
-                years.
+                H.R. International Agency specializes in providing end-to-end
+                recruitment solutions, which include sourcing candidates,
+                managing training programs, securing valid work visas, and
+                handling employee contract management to ensure legal compliance
+                and smooth employment processes. They pride themselves on their
+                ability to secure legitimate work visas, thereby assuring both
+                employers and employees of a secure and transparent immigration
+                and employment process.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                In addition to recruitment services, the agency offers
+                comprehensive visa processing solutions for numerous countries,
+                including Canada, Saudi Arabia, Malaysia, Korea, and most
+                European nations. Their experienced team simplifies the complex
+                visa procedures, making the process swift and hassle-free for
+                their clients. Moreover, H.R. International Agency provides
+                expert immigration consultancy services, guiding individuals and
+                families through the intricate pathways of immigration and
+                emigration, ensuring they are well-informed and prepared for
+                their international relocation.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Overall, H.R. International Agency stands out as a reliable and
+                professional partner for both employers seeking qualified
+                manpower and individuals aspiring to work or settle abroad,
+                supported by their extensive experience, broad service
+                offerings, and commitment to client satisfaction.
               </p>
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 mt-12 mb-6">
-              Here's what sets us apart:
-            </h2>
-            <ol className="space-y-4 list-decimal list-inside">
-              <li className="text-gray-700">
-                We currently have our presence across India, Nepal, Morocco,
-                Bangladesh, the Philippines, Sri Lanka, Nigeria, Kenya, Uganda,
-                Ghana, Indonesia, and Egypt.
-              </li>
-              <li className="text-gray-700">
-                We are a UAE and KSA-based recruitment, outsourcing, fit-out,
-                and construction firm with an NSDC-approved evaluation center.
-              </li>
-              <li className="text-gray-700">
-                We are a UAE and KSA-based MEP contracting company with two
-                decades of experience.
-              </li>
-              <li className="text-gray-700">
-                Enhanced relationship with MEGA Recruitment Companies and
-                Government Bodies in Saudi Arabia has allowed us to give
-                exceptional services to our clients with cost optimization,
-                rapid turnaround, and faster growth.
-              </li>
-              <li className="text-gray-700">
-                Established end-to-end consultancy services in the GCC, where we
-                advise enterprises on business setup and workforce needs (right
-                from visas and work permits to legal compliance).
-              </li>
-              <li className="text-gray-700">
-                Soundlines serves the Chinese Gulf companies with manpower
-                supply. During the Covid19 pandemic, we deployed Indian medical
-                staff to the Gulf.
-              </li>
-              <li className="text-gray-700">
-                Soundlines Recruitment is approved by Qatar's Supreme Committee,
-                to recruit.
-              </li>
-              <li className="text-gray-700">
-                We have provided labor for iconic projects like Expo 2020, FIFA
-                World Cup 2022, and Vision 2030.
-              </li>
-            </ol>
           </div>
         </div>
       </div>

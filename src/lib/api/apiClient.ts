@@ -23,7 +23,7 @@ import { toast } from "react-toastify";
 import { baseUrl } from "@/utils/Urls/StaticUrl";
 
 const apiClient = axios.create({
-  baseURL: baseUrl || "http://localhost:5001",
+  baseURL: baseUrl || "https://rainbowsky.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
