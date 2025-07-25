@@ -9,7 +9,8 @@ export interface Job {
   companyName: string;
   location?: string;
   applicants: any[];
-  status: "active" | "inactive";
+  // status?: "active" | "inactive" | undefined;
+  status?: string;
   workingHours: number;
   salary: number;
   currency: string;

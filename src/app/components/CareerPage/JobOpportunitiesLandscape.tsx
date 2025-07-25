@@ -1,53 +1,5 @@
 import JobCard from "./JobCard";
-
-const jobData = [
-  {
-    id: "1",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "WE'RE HIRING IN RUSSIA",
-    description: "Looking for a sharp, driven and versatile Individual",
-    location: "Moscow, Russia",
-  },
-  {
-    id: "2",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "URGENTLY REQUIRED For Domino's Pizza Restaurant in KSA",
-    description:
-      "Pizza Maker, Service Crew, Team Member, Assistant Waiter, Counter Staff",
-    location: "Saudi Arabia",
-  },
-  {
-    id: "3",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "WE ARE HIRING! For QCON in Qatar (Oil & Gas Project)",
-    description: "Multiple positions available in construction and engineering",
-    location: "Qatar",
-  },
-  {
-    id: "4",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "URGENT REQUIREMENT For Bader Al Mulla & Bros Co. in Kuwait",
-    description:
-      "Welding Supervisor, Pipe Fabricator and other technical positions",
-    location: "Kuwait",
-  },
-  {
-    id: "5",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "FREE RECRUITMENT POSITIONS",
-    description:
-      "MIG Welder, Structural Fabricator, Assistant Structural positions available",
-    location: "Dubai, UAE",
-  },
-  {
-    id: "6",
-    imageUrl: "/placeholder.svg?height=200&width=300",
-    title: "POSITIONS Available",
-    description:
-      "Camp Boss & Catering Supervisor, Trainee Camp Boss, Assistant Cook, South Indian Cook",
-    location: "Various Locations",
-  },
-];
+import jobData from "@/utils/JobData";
 
 export default function JobOpportunities() {
   return (
@@ -68,12 +20,16 @@ export default function JobOpportunities() {
         {jobData.map((job) => (
           <JobCard
             key={job.id}
-            id={job.id}
+            _id={job.id}
             country={job.location}
             imageUrl={job.imageUrl}
             title={job.title}
             details={job.description}
-            location={job.location}
+            status={job.status}
+            workingHours={job.workingHours || 40}
+            salary={job.salary || 0}
+            currency={job.currency || "USD"}
+            facilities={job.facilities || []}
           />
         ))}
       </div>
