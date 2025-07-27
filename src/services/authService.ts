@@ -1,4 +1,3 @@
-// services/authService.ts
 import apiClient from "@/lib/api/apiClient";
 import { LoginCredentials, LoginResponse, SignupFormData } from "@/types/auth";
 
@@ -34,10 +33,6 @@ export const login = async (
       credentials
     );
 
-    // Store token in localStorage
-    if (typeof window !== "undefined") {
-      localStorage.setItem("authToken", response.data.token);
-    }
 
     return response.data;
   } catch (error: any) {
@@ -58,5 +53,28 @@ export const login = async (
     } else {
       throw new Error("Login failed. Please try again.");
     }
+  }
+};
+
+
+export const googleSignIn = async (
+  idToken: string
+): Promise<{ token: string; user: any }> => {
+  try {
+    const response = await apiClient.post<LoginResponse>(
+      "/users/google",
+      { token: idToken }
+    );
+    return response.data;
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(
+        error.response.data?.message || "Google sign‑in failed"
+      );
+    }
+    if (error.request) {
+      throw new Error("No response from server. Please try again.");
+    }
+    throw new Error("Google sign‑in failed. Please try again.");
   }
 };
