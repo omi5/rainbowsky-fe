@@ -1,24 +1,25 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import JobDetails from "@/app/components/Job/JobDetails";
-import CVSubmission from "@/app/components/CareerPage/CvSubmission";
 import Footer from "@/app/components/HomePage/Footer";
-
+import Navbar from "@/app/components/HomePage/Navbar";
+import { useAuth } from "@/app/context/authContext";
 import { Job } from "@/types/job";
 import { getJobById, applyToJob } from "@/services/jobService";
 
 export default function JobPage() {
   const { id } = useParams() as { id: string };
+  const router = useRouter();
   const [job, setJob] = useState<Job | null>(null);
   const [loading, setLoading] = useState(true);
   const [applying, setApplying] = useState(false);
   const [error, setError] = useState("");
+  const { isAuthenticated } = useAuth();
 
-  // Fetch job on mount / id change
   useEffect(() => {
     if (!id) return;
     setLoading(true);
@@ -28,9 +29,15 @@ export default function JobPage() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  // Apply handler
   const handleApply = async () => {
+    if (!isAuthenticated) {
+      toast.warning("Please log in to apply.");
+      router.push(`/login?redirect=/jobs/${id}`);
+      return;
+    }
+
     if (!job) return;
+
     setApplying(true);
     try {
       await applyToJob(job._id);
@@ -49,10 +56,10 @@ export default function JobPage() {
 
   return (
     <>
-      {/* Job info */}
+      <Navbar />
+      <br />
       <JobDetails job={job} />
 
-      {/* Apply button */}
       <div className="flex justify-center my-8">
         <button
           onClick={handleApply}
@@ -63,10 +70,7 @@ export default function JobPage() {
         </button>
       </div>
 
-      {/* CV Submission + footer */}
-      <div className="bg-gray-100 py-8">
-        {/* <CVSubmission /> */}
-      </div>
+      <div className="bg-gray-100 py-8">{/* <CVSubmission /> */}</div>
       <Footer />
     </>
   );

@@ -16,7 +16,7 @@ const logoUrls = [
   // Add more if needed
 ];
 
-export default function ClientsGrid() {
+export default function PartnersGrid() {
   return (
     <section className="py-16 px-4">
       {/* Title */}
@@ -27,11 +27,7 @@ export default function ClientsGrid() {
             <span className="text-[#FE0000]">/</span> Clients
           </span>
         </div>
-        <div className="flex justify-center mt-10 flex-wrap gap-4 text-xs md:text-sm text-gray-600 font-medium">
-          <span>CONSTRUCTION / MEP</span>
-          <span>QSR/RESTAURANT/CAFE/SWEET/CATERING/FMCG</span>
-          <span>HOSPITALITY/AIRLINES/ENTERTAINMENT/RETAIL/HEALTHCARE</span>
-        </div>
+      
       </div>
 
       {/* Logo Grid */}
@@ -51,11 +47,11 @@ export default function ClientsGrid() {
       </div>
 
       {/* View More Button */}
-      <div className="text-center mt-10">
+      {/* <div className="text-center mt-10">
         <button className="bg-black text-white px-6 py-2 uppercase text-sm tracking-wide hover:bg-gray-800 transition">
           to view more →
         </button>
-      </div>
+      </div> */}
     </section>
   );
 }

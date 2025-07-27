@@ -14,7 +14,7 @@ export default function JobDetails({ job }: JobDetailsProps) {
     typeof value === "number" ? value : "Not available";
 
   return (
-    <section className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 ">
       <div className="max-w-4xl mx-auto space-y-10">
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-md overflow-hidden">

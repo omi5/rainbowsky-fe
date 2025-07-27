@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "../components/HomePage/Navbar";
 import CTASection from "../components/AboutPage/Cta-section";
-import HeroSection from "../components/ContractUs/HeroSection";
+import HeroSection from "../components/ContactUs/HeroSection";
 import Footer from "../components/HomePage/Footer";
-import OfficeDirectory from "../components/ContractUs/Office-directory";
-import TeamDirectory from "../components/ContractUs/Team-directory";
+import OfficeDirectory from "../components/ContactUs/Office-directory";
+import TeamDirectory from "../components/ContactUs/Team-directory";
 
 const ContactPage = () => {
   return (
