@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { FaGoogle } from "react-icons/fa";
-import { GoogleLogin, CredentialResponse } from "@react-oauth/google";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
+import { GoogleLogin, CredentialResponse } from "@react-oauth/google";
 
 import { login as loginService, googleSignIn } from "@/services/authService";
 import { useAuth } from "@/app/context/authContext";
@@ -20,6 +19,14 @@ const Login: React.FC = () => {
   const [googleLoading, setGoogleLoading] = useState(false);
   const router = useRouter();
   const { login } = useAuth();
+  const searchParams = useSearchParams();
+
+  const redirectTo = searchParams.get("redirect") || "/";
+
+  useEffect(() => {
+    const isRedirect = searchParams.has("redirect");
+    if (isRedirect) toast.info("Please log in to continue.");
+  }, [searchParams]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,13 +35,10 @@ const Login: React.FC = () => {
       const data = await loginService({ email, password });
       login(data);
       toast.success("Logged in successfully");
-      router.push("/");
+      router.push(redirectTo);
     } catch (err: any) {
-       console.log("🔥 handleLogin catch:", err.message);
       toast.error(err.message);
-      if (err.message.toLowerCase().includes("invalid")) {
-        setPassword("");
-      }
+      if (err.message.toLowerCase().includes("invalid")) setPassword("");
     } finally {
       setIsLoading(false);
     }
@@ -50,7 +54,7 @@ const Login: React.FC = () => {
       const data = await googleSignIn(res.credential);
       login(data);
       toast.success("Logged in with Google");
-      router.push("/");
+      router.push(redirectTo);
     } catch (err: any) {
       toast.error(err.message);
     } finally {

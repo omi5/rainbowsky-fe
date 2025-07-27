@@ -24,7 +24,7 @@ export const getJobById = async (id: string): Promise<Job> => {
 };
 
 export const applyToJob = async (id: string): Promise<void> => {
-  const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  const token = typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
   if (!token) throw new Error("Not authenticated");
 
   await apiClient.post(
