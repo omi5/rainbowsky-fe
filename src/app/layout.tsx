@@ -27,14 +27,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("client id=====", ClientId)
+  console.log("client id=====", ClientId);
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <GoogleOAuthProvider clientId={ClientId}>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            {children}
+            <ToastContainer />
+          </AuthProvider>
         </GoogleOAuthProvider>
       </body>
     </html>

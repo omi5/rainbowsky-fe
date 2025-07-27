@@ -30,6 +30,7 @@ const Login: React.FC = () => {
       toast.success("Logged in successfully");
       router.push("/");
     } catch (err: any) {
+       console.log("🔥 handleLogin catch:", err.message);
       toast.error(err.message);
       if (err.message.toLowerCase().includes("invalid")) {
         setPassword("");

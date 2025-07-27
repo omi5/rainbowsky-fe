@@ -38,8 +38,9 @@ export const login = async (
 
     return response.data;
   } catch (err: any) {
+     console.log("🔥 loginService catch:", err.response?.data, err.message);
      if (err.response) {
-      // backend sent a status + message
+      
       const msg = err.response.data?.message || "Login failed";
       throw new Error(msg);
     }
