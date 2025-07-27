@@ -55,7 +55,7 @@ export default function ClientAwardsSlider({
         <div className="text-center mb-12">
           <span className="text-4xl font-sans-serif text-[#464646] tracking-[10px]">
             <span className="text-[#999999]">04</span>{" "}
-            <span className="text-[#FE0000]">/</span> Associated Partners
+            <span className="text-[#FE0000]">/</span> Clients
           </span>
         </div>
 

@@ -198,10 +198,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Associated partners Section */}
+          {/* Clients Section */}
           <div>
             <h3 className="text-white text-lg font-medium mb-6 flex items-center">
-              Associated partners
+              Clients
               <span className="ml-2 text-blue-400">🏆</span>
             </h3>
 
