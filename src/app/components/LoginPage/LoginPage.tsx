@@ -7,18 +7,17 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 import { login as loginService, googleSignIn } from "@/services/authService";
+import { useAuth } from "@/app/context/authContext";
 import InputLabel from "../CustomComponent/InputLabel";
 import CustomInput from "../CustomComponent/CustomInput";
 import CustomButton from "../CustomComponent/CustomButton";
 import Link from "next/link";
-import { useAuth } from "@/app/context/authContext";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
-
   const router = useRouter();
   const { login } = useAuth();
 
