@@ -27,7 +27,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link
           href="/"
-          className="text-2xl font-bold text-blue-800 hover:text-blue-700 transition-colors"
+          className="text-2xl mr-7 font-bold text-blue-800 hover:text-blue-700 transition-colors text-nowrap"
         >
           HR International Agency
         </Link>
@@ -41,19 +41,19 @@ export default function Navbar() {
           </Link>
           <Link
             href="/about"
-            className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium"
+            className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium text-nowrap"
           >
             About Us
           </Link>
           <Link
             href="/contact"
-            className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium"
+            className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium text-nowrap"
           >
             Contact Us
           </Link>
           <Link
             href="/careers"
-            className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium"
+            className="text-gray-700 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium text-nowrap"
           >
             Manpower Recruitment
           </Link>
