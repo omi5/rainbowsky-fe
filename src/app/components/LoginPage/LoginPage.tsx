@@ -25,8 +25,8 @@ const Login: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const { token, user } = await loginService({ email, password });
-      login(token);
+      const data = await loginService({ email, password });
+      login(data);
       toast.success("Logged in successfully");
       router.push("/");
     } catch (err: any) {
@@ -47,8 +47,8 @@ const Login: React.FC = () => {
     }
     setGoogleLoading(true);
     try {
-      const { token, user } = await googleSignIn(res.credential);
-      login(token);
+      const data = await googleSignIn(res.credential);
+      login(data);
       toast.success("Logged in with Google");
       router.push("/");
     } catch (err: any) {
