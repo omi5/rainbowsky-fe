@@ -281,14 +281,14 @@ export default function Navbar() {
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     pathname === "/profile"
                       ? "bg-blue-100 text-blue-600"
-                      : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
                   Profile
                 </Link>
                 <button
                   onClick={logout}
-                  className="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-red-600 transition-colors"
+                  className="px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-red-600 transition-colors"
                 >
                   Logout
                 </button>
@@ -300,7 +300,7 @@ export default function Navbar() {
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     pathname === "/login"
                       ? "bg-blue-100 text-blue-600"
-                      : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
                   Login
@@ -318,7 +318,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+          className="md:hidden p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <svg
@@ -400,8 +400,10 @@ export default function Navbar() {
                 <Link
                   href="/profile"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 transition-colors ${
-                    pathname === "/profile" ? "text-blue-600 font-medium" : ""
+                  className={`block px-4 py-3 rounded-lg text-gray-700 transition-colors ${
+                    pathname === "/profile"
+                      ? "bg-blue-100 text-blue-600"
+                      : "bg-gray-100 hover:bg-gray-200"
                   }`}
                 >
                   Profile
@@ -411,7 +413,7 @@ export default function Navbar() {
                     logout();
                     setMobileMenuOpen(false);
                   }}
-                  className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:text-red-600 transition-colors"
+                  className="block w-full px-4 py-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-red-600 transition-colors"
                 >
                   Logout
                 </button>
@@ -421,8 +423,10 @@ export default function Navbar() {
                 <Link
                   href="/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 transition-colors ${
-                    pathname === "/login" ? "text-blue-600 font-medium" : ""
+                  className={`block px-4 py-3 rounded-lg text-gray-700 transition-colors ${
+                    pathname === "/login"
+                      ? "bg-blue-100 text-blue-600"
+                      : "bg-gray-100 hover:bg-gray-200"
                   }`}
                 >
                   Login
