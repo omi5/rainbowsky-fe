@@ -27,7 +27,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("client id=====", ClientId);
   return (
     <html lang="en">
       <body
