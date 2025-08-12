@@ -10,6 +10,12 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isAuthenticated, logout } = useAuth();
   const pathname = usePathname();
+  // const user = localStorage.getItem("user");
+  // const userId = user ? JSON.parse(user).id : null;
+
+  const user =
+    typeof window !== "undefined" ? localStorage.getItem("user") : null;
+  const userId = user ? JSON.parse(user).id : null;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -203,9 +209,9 @@ export default function Navbar() {
             {isAuthenticated ? (
               <>
                 <Link
-                  href="/profile"
+                  href={`/profile/${userId}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg text-gray-700 transition-colors ${
+                  className={`block px-4 py-3 rounded-lg text-gray-700 transition-colors cursor-pointer ${
                     pathname === "/profile"
                       ? "bg-blue-100 text-blue-600"
                       : "bg-gray-100 hover:bg-gray-200"
@@ -218,7 +224,7 @@ export default function Navbar() {
                     logout();
                     setMobileMenuOpen(false);
                   }}
-                  className="block w-full px-4 py-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-red-600 transition-colors"
+                  className="block w-full px-4 py-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-red-600 transition-colors cursor-pointer"
                 >
                   Logout
                 </button>
@@ -228,7 +234,7 @@ export default function Navbar() {
                 <Link
                   href="/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg text-gray-700 transition-colors ${
+                  className={`block px-4 py-3 rounded-lg text-gray-700 transition-colors cursor-pointer ${
                     pathname === "/login"
                       ? "bg-blue-100 text-blue-600"
                       : "bg-gray-100 hover:bg-gray-200"
@@ -239,7 +245,7 @@ export default function Navbar() {
                 <Link
                   href="/signup"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 text-center shadow-sm transition-colors"
+                  className="block px-4 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 text-center shadow-sm transition-colors cursor-pointer"
                 >
                   Sign Up
                 </Link>
