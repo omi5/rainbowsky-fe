@@ -43,7 +43,7 @@ export default function UserEditPage() {
     try {
       setIsLoading(true);
       await updateUser(token!, id as string, updatedUser);
-      router.push(`/applicants`);
+      router.push(`/profile`);
     } catch (error: any) {
       console.error("Failed to update user:", error);
       // Add user-visible error handling here
