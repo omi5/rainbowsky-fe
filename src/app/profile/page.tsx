@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, ChangeEvent } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useAuth } from "@/app/context/authContext";
 import { Mail, Phone, User, Calendar } from "lucide-react";
@@ -10,13 +10,20 @@ import { ApplicantDocuments } from "./components/ApplicantDocuments";
 // import { ApplicantJobs } from "./components/ApplicantJobs";
 
 export default function ApplicantPage() {
-  const userDeatils = localStorage.getItem("user");
-  const userId = userDeatils ? JSON.parse(userDeatils).id : null;
+  const [userId, setUserId] = useState<string | null>(null);
   const { token } = useAuth();
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const userDetails = localStorage.getItem("user");
+    if (userDetails) {
+      const parsedUser = JSON.parse(userDetails);
+      setUserId(parsedUser.id);
+    }
+  }, []);
 
   const fetchUserData = async () => {
     try {
