@@ -1,3 +1,6 @@
+"use client";
+import { useTranslations } from "@/hooks/useTranslations";
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -25,6 +28,9 @@ export default function Testimonials() {
       text: "Soundlines Group deserves this testimonial, and we are very happy to provide it. Our relationship will also continue to grow and provide mutually beneficial outcomes for both parties, which we are confident about.",
     },
   ];
+  const t = useTranslations("Testimonials");
+  const [firstWord, ...restWords] = t("title").split(" ");
+  const secondWord = restWords.join(" ");
 
   return (
     <div className="w-full bg-gray-100 py-16">
@@ -46,12 +52,12 @@ export default function Testimonials() {
             {/* Section Header */}
             <div className="text-center">
               <span className="text-4xl font-sans-serif text-[#464646] tracking-[10px]">
-                <span className="text-[#999999]">01</span>{" "}
-                <span className="text-[#FE0000]">/</span> CLIENT
+                <span className="text-[#999999]">05</span>{" "}
+                <span className="text-[#FE0000]">/</span> {firstWord}
               </span>
               <br />
               <span className="text-4xl font-sans-serif text-[#464646] tracking-[10px]">
-                TESTIMONIALS
+                {secondWord}
               </span>
             </div>
 

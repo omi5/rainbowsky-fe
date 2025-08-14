@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import certificationLogos from "@/utils/partnersImage/partnersImage";
+import { useTranslations } from "@/hooks/useTranslations";
 
 interface CertificationLogo {
   id: number;
@@ -27,6 +28,7 @@ export default function ClientAwardsSlider({
   const slideData = logos || defaultLogos;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoSliding, setIsAutoSliding] = useState(true);
+  const t = useTranslations("Clients");
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slideData.length);
@@ -55,7 +57,7 @@ export default function ClientAwardsSlider({
         <div className="text-center mb-12">
           <span className="text-4xl font-sans-serif text-[#464646] tracking-[10px]">
             <span className="text-[#999999]">04</span>{" "}
-            <span className="text-[#FE0000]">/</span> Clients
+            <span className="text-[#FE0000]">/</span> {t("title")}
           </span>
         </div>
 

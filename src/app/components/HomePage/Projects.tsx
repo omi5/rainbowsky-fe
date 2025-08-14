@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "@/hooks/useTranslations";
 import { useState } from "react";
 
 interface SlideData {
@@ -66,6 +67,7 @@ export default function ProjectSlider({ slides }: DotSliderProps) {
 
   const slideData = slides || defaultSlides;
   const [currentSlide, setCurrentSlide] = useState(0);
+  const t = useTranslations("Projects");
 
   return (
     <div className="w-full bg-white py-16">
@@ -75,7 +77,7 @@ export default function ProjectSlider({ slides }: DotSliderProps) {
           <h2 className="text-4xl font-light text-gray-600 mb-8">
             <span className="text-4xl font-sans-serif text-[#464646] tracking-[10px]">
               <span className="text-[#999999]">03</span>{" "}
-              <span className="text-[#FE0000]">/</span> PROJECTS
+              <span className="text-[#FE0000]">/</span> {t("title")}
             </span>
           </h2>
         </div>

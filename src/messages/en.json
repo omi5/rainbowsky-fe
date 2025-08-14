@@ -1,0 +1,124 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "careers": "Manpower Recruitment",
+    "gallery": "Gallery",
+    "login": "Login",
+    "signup": "Sign Up",
+    "profile": "Profile",
+    "logout": "Logout",
+    "language": "Language"
+  },
+  "Languages": {
+    "en": "English",
+    "bn": "Bangla",
+    "ar": "Arabic"
+  },
+  "Hero": {
+    "title": "RELIABLE MANPOWER SOLUTIONS TO POWER YOUR BUSINESS",
+    "button": "GET A CALLBACK"
+  },
+  "About": {
+    "title": "ABOUT US",
+    "heading": "01 / ABOUT US",
+    "content": "H.R. International Agency, bearing the recruiting license number 1134, is a well-established and trusted recruitment firm based in Bangladesh with over 12 years of dedicated experience in the human resource industry. Throughout their years of operation, the agency has built a strong reputation for integrity, professionalism, and reliability in the field of international recruitment. They have successfully facilitated the movement of thousands of skilled, semi-skilled, and unskilled workers to more than 20 diverse countries, including Saudi Arabia, Qatar, Kuwait, Oman, Malaysia, Korea, Singapore, Hungary, and Russia. Their extensive network and expertise enable them to source talented candidates suitable for various industries and employment sectors.",
+    "button": "READ MORE ►"
+  },
+  "stats": {
+    "experience": "Years of Experience",
+    "locations": "International Locations",
+    "clients": "Happy Clients",
+    "candidates": "Candidates Deployed"
+  },
+  "Services": {
+    "heading": "OUR SERVICES",
+    "services": [
+      {
+        "title": "Manpower Recruitment",
+        "description": "End‑to‑end workforce recruitment, including screening, sourcing, training, onboarding and employment contracting."
+      },
+      {
+        "title": "Visa Processing",
+        "description": "Comprehensive visa handling—from document prep to submission and follow‑up—for seamless overseas employment."
+      },
+      {
+        "title": "One Stop Solution Services for Overseas Workers",
+        "description": "All‑in‑one support: pre‑departure training, visa & travel arrangements, post‑arrival assistance and legal advice."
+      },
+      {
+        "title": "Immigration Consultancy",
+        "description": "Expert guidance on visas, work permits, residency and citizenship to ensure a smooth, efficient immigration journey."
+      }
+    ]
+  },
+  "Projects": {
+    "title": "Projects",
+    "heading": "03 / PROJECTS"
+  },
+  "Clients": {
+    "title": "Clients",
+    "heading": "04 / CLIENTS"
+  },
+  "Testimonials": {
+    "title": "Client Testimonials",
+    "heading": "05 / CLIENT TESTIMONIALS"
+  },
+  "AboutUsPage": {
+    "title": "About us",
+    "paragraphs": [
+      "H.R. International Agency, bearing the recruiting license number 1134, is a well-established and trusted recruitment firm based in Bangladesh with over 12 years of dedicated experience in the human resource industry. Throughout their years of operation, the agency has built a strong reputation for integrity, professionalism, and reliability in the field of international recruitment. They have successfully facilitated the movement of thousands of skilled, semi-skilled, and unskilled workers to more than 20 diverse countries, including Saudi Arabia, Qatar, Kuwait, Oman, Malaysia, Korea, Singapore, Hungary, and Russia. Their extensive network and expertise enable them to source talented candidates suitable for various industries and employment sectors.",
+      "H.R. International Agency specializes in providing end-to-end recruitment solutions, which include sourcing candidates, managing training programs, securing valid work visas, and handling employee contract management to ensure legal compliance and smooth employment processes. They pride themselves on their ability to secure legitimate work visas, thereby assuring both employers and employees of a secure and transparent immigration and employment process.",
+      "In addition to recruitment services, the agency offers comprehensive visa processing solutions for numerous countries, including Canada, Saudi Arabia, Malaysia, Korea, and most European nations. Their experienced team simplifies the complex visa procedures, making the process swift and hassle-free for their clients. Moreover, H.R. International Agency provides expert immigration consultancy services, guiding individuals and families through the intricate pathways of immigration and emigration, ensuring they are well-informed and prepared for their international relocation.",
+      "Overall, H.R. International Agency stands out as a reliable and professional partner for both employers seeking qualified manpower and individuals aspiring to work or settle abroad, supported by their extensive experience, broad service offerings, and commitment to client satisfaction."
+    ]
+  },
+  "WhyUs": {
+    "title": "Why us?",
+    "items": [
+      {
+        "title": "ONE-STOP SOLUTION",
+        "content": {
+          "heading": "Wide range of Services, beyond HR & consultancy",
+          "description": "Our services enable our clients to focus on their business growth."
+        }
+      },
+      {
+        "title": "TRACK RECORD",
+        "content": {
+          "heading": "Proven Excellence in Service Delivery",
+          "description": "Years of successful partnerships and client satisfaction across multiple industries."
+        }
+      },
+      {
+        "title": "GLOBAL SERVICE REACH",
+        "content": {
+          "heading": "International Presence and Local Expertise",
+          "description": "Serving clients across multiple countries with localized solutions."
+        }
+      },
+      {
+        "title": "EXCELLENCE",
+        "content": {
+          "heading": "Commitment to Quality and Innovation",
+          "description": "Delivering exceptional results through continuous improvement and innovation."
+        }
+      },
+      {
+        "title": "EXTENSIVE WORLDWIDE NETWORK",
+        "content": {
+          "heading": "Connected Globally, Acting Locally",
+          "description": "Leveraging our international network to provide comprehensive solutions."
+        }
+      },
+      {
+        "title": "A STRATEGIC PARTNERSHIP",
+        "content": {
+          "heading": "Long-term Collaborative Relationships",
+          "description": "Building strategic partnerships that drive mutual growth and success."
+        }
+      }
+    ]
+  }
+}
