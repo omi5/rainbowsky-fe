@@ -14,28 +14,28 @@ export default function JobDetails({ job }: JobDetailsProps) {
     typeof value === "number" ? value : "Not available";
 
   return (
-    <section className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 ">
-      <div className="max-w-4xl mx-auto space-y-10">
+    <section className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto space-y-10">
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-md overflow-hidden">
-          <div className="md:flex">
+          <div className="flex flex-col md:flex-row">
             {/* Image */}
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full flex justify-center items-center bg-gray-100 p-4">
               <img
                 src={job.imageUrl || "/placeholder.svg"}
                 alt={formatOrNA(job.title)}
-                className="w-full h-64 object-cover"
+                className="w-full h-auto max-h-[400px] object-contain rounded-lg shadow"
               />
             </div>
 
             {/* Content */}
-            <div className="p-8 flex-1 space-y-6">
+            <div className="md:w-1/2 w-full p-6 md:p-8 flex flex-col justify-between space-y-6">
               {/* Title & Company */}
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                   {formatOrNA(job.title)}
                 </h1>
-                <p className="mt-1 text-gray-600">
+                <p className="mt-1 text-gray-600 text-sm md:text-base">
                   {formatOrNA(job.companyName)}
                 </p>
               </div>
@@ -62,7 +62,7 @@ export default function JobDetails({ job }: JobDetailsProps) {
                 </span>
               </div>
 
-              {/* What You’ll Do */}
+              {/* Description */}
               <div>
                 <h2 className="text-xl font-semibold text-gray-800">
                   What You’ll Do

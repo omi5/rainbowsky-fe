@@ -1,3 +1,4 @@
+import Certificate from "./components/Certificate";
 import About from "./components/HomePage/About";
 import ClientAwardsSlider from "./components/HomePage/ClientAwards";
 import Footer from "./components/HomePage/Footer";
@@ -18,7 +19,7 @@ export default function Home() {
       <Services />
       <ProjectSlider />
       <ClientAwardsSlider autoSlideInterval={5000} />
-      <Testimonials />
+      <Certificate/>
       {/* <PartnersGrid /> */}
       <GetInTouchForm />
       <Footer />
