@@ -34,11 +34,11 @@ export default function JobCard({
       className="group block transform transition-transform duration-300 hover:scale-105"
     >
       <div className="bg-white rounded-xl shadow-md overflow-hidden group-hover:shadow-xl">
-        <div className="relative">
+        <div className="relative w-full flex justify-center items-center bg-gray-100 p-2">
           <img
             src={imageUrl || "/placeholder.svg"}
             alt={title}
-            className="w-full h-44 object-cover"
+            className="w-full h-auto max-h-44 object-contain rounded-lg"
           />
           <span
             className={`absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded ${

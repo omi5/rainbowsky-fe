@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import InputLabel from "../CustomComponent/InputLabel";
 import CustomInput from "../CustomComponent/CustomInput";
 import CustomButton from "../CustomComponent/CustomButton";
@@ -18,80 +18,67 @@ const Signup = () => {
     confirmPassword: "",
     dob: "",
     gender: "",
+    imageFile: null as File | null,
   });
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData((prev) => ({ ...prev, imageFile: file }));
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
 
-  //   if (formData.password !== formData.confirmPassword) {
-  //     toast.error("Passwords don't match");
-  //     return;
-  //   }
-
-  //   setIsLoading(true);
-  //   try {
-  //     const { confirmPassword, ...payload } = formData;
-  //     const response = await fetch("/api/auth/signup", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(payload),
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (response.ok) {
-  //       toast.success("Account created successfully!");
-  //       router.push("/login");
-  //     } else {
-  //       toast.error(data.message || "Signup failed");
-  //     }
-  //   } catch (err) {
-  //     toast.error("Failed to create account");
-  //     console.error("Signup error:", err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+  const handleUploadClick = () => {
+    fileInputRef.current?.click();
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Client-side validation
     const validationErrors = validateSignupForm(formData);
     if (validationErrors.length > 0) {
-      validationErrors.forEach((error) => toast.error(error));
+      validationErrors.forEach((err) => toast.error(err));
+      return;
+    }
+
+    if (!formData.imageFile) {
+      toast.error("Profile picture is required.");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords don't match");
       return;
     }
 
     setIsLoading(true);
 
     try {
-      // Remove confirmPassword before sending to API
-      const { confirmPassword, ...payload } = formData;
-      await signup(payload);
+      const { confirmPassword, imageFile, ...payload } = formData;
+
+      const data = new FormData();
+      Object.entries(payload).forEach(([key, value]) => data.append(key, value as string));
+      if (imageFile) data.append("image", imageFile);
+
+      await signup(data);
 
       toast.success("Account created successfully! Please login.");
       router.push("/login");
     } catch (error: any) {
       if (error.errors) {
-        // Handle field-specific errors from API
         Object.entries(error.errors).forEach(([field, messages]) => {
           if (Array.isArray(messages)) {
-            messages.forEach((message: string) =>
-              toast.error(`${field}: ${message}`)
-            );
+            messages.forEach((msg: string) => toast.error(`${field}: ${msg}`));
           }
         });
       } else {
@@ -106,16 +93,13 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900">
-            Create your account
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Start your journey with us today
-          </p>
+          <h2 className="text-3xl font-extrabold text-gray-900">Create your account</h2>
+          <p className="mt-2 text-sm text-gray-600">Start your journey with us today</p>
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
+            {/* Full Name */}
             <div>
               <InputLabel text="Full name" isRequired />
               <CustomInput
@@ -128,6 +112,7 @@ const Signup = () => {
               />
             </div>
 
+            {/* Email */}
             <div>
               <InputLabel text="Email address" isRequired />
               <CustomInput
@@ -140,6 +125,7 @@ const Signup = () => {
               />
             </div>
 
+            {/* Phone */}
             <div>
               <InputLabel text="Phone number" isRequired />
               <CustomInput
@@ -152,58 +138,70 @@ const Signup = () => {
               />
             </div>
 
+            {/* Date of Birth */}
             <div>
               <InputLabel text="Date of birth" isRequired />
               <CustomInput
-                placeholder="Enter your date of birth"
                 type="date"
                 name="dob"
                 value={formData.dob}
                 onChange={handleChange}
+                placeholder="Date of Birth"
                 required
               />
             </div>
 
+            {/* Gender */}
             <div>
               <InputLabel text="Gender" isRequired />
               <div className="mt-2 flex space-x-4">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="male"
-                    checked={formData.gender === "male"}
-                    onChange={handleChange}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
-                    required
-                  />
-                  <span className="ml-2 text-gray-700">Male</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="female"
-                    checked={formData.gender === "female"}
-                    onChange={handleChange}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
-                  />
-                  <span className="ml-2 text-gray-700">Female</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="other"
-                    checked={formData.gender === "other"}
-                    onChange={handleChange}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
-                  />
-                  <span className="ml-2 text-gray-700">Other</span>
-                </label>
+                {["male", "female", "other"].map((g) => (
+                  <label key={g} className="inline-flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value={g}
+                      checked={formData.gender === g}
+                      onChange={handleChange}
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                      required
+                    />
+                    <span className="ml-2 text-gray-700">{g.charAt(0).toUpperCase() + g.slice(1)}</span>
+                  </label>
+                ))}
               </div>
             </div>
 
+            {/* Profile Picture */}
+            <div>
+              <InputLabel text="Profile Picture" isRequired />
+              <div className="flex items-center space-x-4 mt-2">
+                <div className="w-24 h-24 rounded-full overflow-hidden border border-gray-300 flex items-center justify-center bg-gray-100">
+                  {imagePreview ? (
+                    <img src={imagePreview} alt="Profile Preview" className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-gray-400 text-sm">Preview</span>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={handleUploadClick}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                >
+                  Upload Image
+                </button>
+              </div>
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                className="hidden"
+              />
+            </div>
+
+            {/* Password */}
             <div>
               <InputLabel text="Password" isRequired />
               <CustomInput
@@ -214,11 +212,10 @@ const Signup = () => {
                 onChange={handleChange}
                 required
               />
-              <p className="mt-1 text-xs text-gray-500">
-                Must be at least 8 characters
-              </p>
+              <p className="mt-1 text-xs text-gray-500">Must be at least 8 characters</p>
             </div>
 
+            {/* Confirm Password */}
             <div>
               <InputLabel text="Confirm password" isRequired />
               <CustomInput
@@ -232,24 +229,14 @@ const Signup = () => {
             </div>
           </div>
 
-          <div>
-            <CustomButton
-              type="submit"
-              size="block"
-              variant="primary"
-              isLoading={isLoading}
-            >
-              Create account
-            </CustomButton>
-          </div>
+          <CustomButton type="submit" size="block" variant="primary" isLoading={isLoading}>
+            Create account
+          </CustomButton>
         </form>
 
         <div className="text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <Link
-            href="/login"
-            className="font-medium text-blue-600 hover:text-blue-500"
-          >
+          <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500">
             Log in
           </Link>
         </div>

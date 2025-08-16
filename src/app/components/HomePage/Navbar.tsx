@@ -298,7 +298,7 @@ export default function Navbar() {
           href="/"
           className="text-2xl font-bold text-blue-800 hover:text-blue-700 transition-colors"
         >
-          HR International Agency
+          HR International
         </Link>
 
         {/* Desktop Nav */}

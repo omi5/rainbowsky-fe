@@ -2,11 +2,13 @@ import apiClient from "@/lib/api/apiClient";
 import { LoginCredentials, LoginResponse, SignupFormData } from "@/types/auth";
 
 // Signup function
-export const signup = async (
-  formData: Omit<SignupFormData, "confirmPassword">
-): Promise<any> => {
+export const signup = async (formData: FormData): Promise<any> => {
   try {
-    const response = await apiClient.post("/users/signup", formData);
+    const response = await apiClient.post("/users/signup", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data", 
+      },
+    });
     return response.data;
   } catch (error: any) {
     if (error.response) {
