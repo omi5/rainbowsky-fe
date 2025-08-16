@@ -4,6 +4,7 @@ import ClientAwardsSlider from "./components/HomePage/ClientAwards";
 import Footer from "./components/HomePage/Footer";
 import GetInTouchForm from "./components/HomePage/Get-in-touch-form";
 import Hero from "./components/HomePage/Hero";
+import JobImageSlider from "./components/HomePage/JobsSlider";
 import Navbar from "./components/HomePage/Navbar";
 import ProjectSlider from "./components/HomePage/Projects";
 import Services from "./components/HomePage/Services";
@@ -17,9 +18,10 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <ProjectSlider />
+      <JobImageSlider/>
+      {/* <ProjectSlider /> */}
       <ClientAwardsSlider autoSlideInterval={5000} />
-      <Certificate/>
+      <Certificate />
       {/* <PartnersGrid /> */}
       <GetInTouchForm />
       <Footer />
