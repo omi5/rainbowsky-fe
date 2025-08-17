@@ -36,6 +36,7 @@ export default function ApplicantPage() {
       );
       const userData = await response.json();
       setData(userData);
+      console.log("Fetched user data:", userData);
     } catch (error) {
       console.error("Error fetching user data:", error);
     } finally {

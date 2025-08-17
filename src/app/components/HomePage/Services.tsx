@@ -84,9 +84,6 @@ import { useTranslations } from "@/hooks/useTranslations";
 export default function Services() {
   const t = useTranslations("Services");
 
-  // Debug: Check what t('services') returns
-  console.log("Raw services data:", t("services"));
-
   // Get services data properly
   const servicesData = t("services");
   // const servicesArray =
