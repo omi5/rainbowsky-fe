@@ -103,7 +103,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="relative py-20">
+    <section id="services" className="relative py-20 px-6">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
