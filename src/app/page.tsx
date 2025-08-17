@@ -1,6 +1,7 @@
 import Certificate from "./components/Certificate";
 import About from "./components/HomePage/About";
 import ClientAwardsSlider from "./components/HomePage/ClientAwards";
+import FlagsGrid from "./components/HomePage/Flags";
 import Footer from "./components/HomePage/Footer";
 import GetInTouchForm from "./components/HomePage/Get-in-touch-form";
 import Hero from "./components/HomePage/Hero";
@@ -18,7 +19,8 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <JobImageSlider/>
+      <FlagsGrid/>
+      <JobImageSlider />
       {/* <ProjectSlider /> */}
       <ClientAwardsSlider autoSlideInterval={5000} />
       <Certificate />

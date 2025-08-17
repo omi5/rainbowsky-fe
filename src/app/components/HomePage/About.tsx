@@ -70,7 +70,6 @@
 //     </section>
 //   );
 // }
-
 "use client";
 import { useRouter } from "next/navigation";
 import Counter from "./Counter";
@@ -84,16 +83,19 @@ export default function About() {
   return (
     <section id="about" className="py-20 bg-gray-50 max-w-7xl mx-auto">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row gap-12 items-center">
+        {/* Keep both columns top aligned so they start at same baseline */}
+        <div className="flex flex-col md:flex-row gap-12 items-start">
           {/* Left Column */}
           <div className="md:w-1/2">
             <span className="text-4xl font-sans-serif text-[#464646] tracking-[10px]">
               <span className="text-[#999999]">01</span>{" "}
               <span className="text-[#FE0000]">/</span> {t("title")}
             </span>
+
             <p className="text-[#909090] text-lg tracking-[0.5px] mb-8 mt-8">
               {t("content")}
             </p>
+
             <button
               className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
               onClick={() => navigate.push("/about")}
@@ -102,19 +104,44 @@ export default function About() {
             </button>
           </div>
 
-          {/* Right Column - Counters */}
-          <div className="md:w-1/2 grid grid-cols-2 relative">
-            <div className="border-b border-r border-gray-300">
-              <Counter target={25} label={t2("experience")} />
-            </div>
-            <div className="border-b border-l border-gray-300">
-              <Counter target={22} label={t2("locations")} />
-            </div>
-            <div className="border-t border-r border-gray-300">
-              <Counter target={1000} label={t2("clients")} plusSign={true} />
-            </div>
-            <div className="border-t border-l border-gray-300">
-              <Counter target={7000} label={t2("candidates")} plusSign={true} />
+          {/* Right Column - Counters as a single box */}
+          <div className="md:w-1/2 flex justify-end w-full">
+            {/* This box keeps the counters constrained and forms a neat rectangle */}
+            <div className="w-full max-w-md border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              {/* 2x2 grid; each cell forced to same height so there's no zigzag */}
+              <div className="grid grid-cols-2">
+                <div className="h-20 sm:h-24 md:h-28 flex items-center justify-end border-b border-r border-gray-200 p-6">
+                  <div className="text-right">
+                    <Counter target={25} label={t2("experience")} />
+                  </div>
+                </div>
+
+                <div className="h-20 sm:h-24 md:h-28 flex items-center justify-end border-b border-l border-gray-200 p-6">
+                  <div className="text-right">
+                    <Counter target={22} label={t2("locations")} />
+                  </div>
+                </div>
+
+                <div className="h-20 sm:h-24 md:h-28 flex items-center justify-end border-t border-r border-gray-200 p-6">
+                  <div className="text-right">
+                    <Counter
+                      target={1000}
+                      label={t2("clients")}
+                      plusSign={true}
+                    />
+                  </div>
+                </div>
+
+                <div className="h-20 sm:h-24 md:h-28 flex items-center justify-end border-t border-l border-gray-200 p-6">
+                  <div className="text-right">
+                    <Counter
+                      target={7000}
+                      label={t2("candidates")}
+                      plusSign={true}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
