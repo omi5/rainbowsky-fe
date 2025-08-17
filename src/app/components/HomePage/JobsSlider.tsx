@@ -13,19 +13,7 @@ export default function JobSlider() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const res = await fetch("http://localhost:5001/jobs");
-        const data = await res.json();
-        setJobs(data.jobs || []);
-      } catch (error) {
-        console.error("Error fetching jobs:", error);
-      }
-    };
 
-    fetchJobs();
-  }, []);
 
   const jobsPerSlide = 3;
   const totalSlides = Math.ceil(jobs.length / jobsPerSlide);
