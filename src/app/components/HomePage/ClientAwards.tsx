@@ -144,13 +144,6 @@ export default function ClientAwardsSlider({
             </div>
           </div>
         </div>
-
-        {/* View More Button */}
-        <div className="text-center mt-12">
-          <button className="bg-transparent border border-white text-white px-6 py-2 rounded hover:bg-white hover:text-gray-800 transition-all duration-300">
-            View More →
-          </button>
-        </div>
       </div>
     </div>
   );

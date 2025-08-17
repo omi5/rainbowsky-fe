@@ -50,6 +50,7 @@ import { ToastContainer } from "react-toastify";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AuthProvider } from "./context/authContext";
 import { LanguageProvider } from "@/context/LanguageContext";
+import WhatsappButton from "./components/WhatsappButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,6 +84,7 @@ export default function RootLayout({
             <LanguageProvider>
               {children}
               <ToastContainer />
+              <WhatsappButton/>
             </LanguageProvider>
           </AuthProvider>
         </GoogleOAuthProvider>
