@@ -4,10 +4,11 @@ import InputLabel from "../CustomComponent/InputLabel";
 import CustomInput from "../CustomComponent/CustomInput";
 import CustomButton from "../CustomComponent/CustomButton";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
-import { signup } from "@/services/authService";
+import { googleSignIn, login, signup } from "@/services/authService";
 import { validateSignupForm } from "@/utils/auth/validation";
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -67,7 +68,9 @@ const Signup = () => {
       const { confirmPassword, imageFile, ...payload } = formData;
 
       const data = new FormData();
-      Object.entries(payload).forEach(([key, value]) => data.append(key, value as string));
+      Object.entries(payload).forEach(([key, value]) =>
+        data.append(key, value as string)
+      );
       if (imageFile) data.append("image", imageFile);
 
       await signup(data);
@@ -88,13 +91,36 @@ const Signup = () => {
       setIsLoading(false);
     }
   };
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "/";
+  const handleGoogleSuccess = async (res: CredentialResponse) => {
+    if (!res.credential) {
+      toast.error("Google sign‑in failed: no credential");
+      return;
+    }
+    // setGoogleLoading(true);
+    try {
+      const data = await googleSignIn(res.credential);
+
+      toast.success("sign up with google success! Please log in with Google");
+      router.push("/login");
+    } catch (err: any) {
+      toast.error(err.message);
+    } finally {
+      // setGoogleLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900">Create your account</h2>
-          <p className="mt-2 text-sm text-gray-600">Start your journey with us today</p>
+          <h2 className="text-3xl font-extrabold text-gray-900">
+            Create your account
+          </h2>
+          <p className="mt-2 text-sm text-gray-600">
+            Start your journey with us today
+          </p>
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -156,7 +182,10 @@ const Signup = () => {
               <InputLabel text="Gender" isRequired />
               <div className="mt-2 flex space-x-4">
                 {["male", "female", "other"].map((g) => (
-                  <label key={g} className="inline-flex items-center cursor-pointer">
+                  <label
+                    key={g}
+                    className="inline-flex items-center cursor-pointer"
+                  >
                     <input
                       type="radio"
                       name="gender"
@@ -166,7 +195,9 @@ const Signup = () => {
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                       required
                     />
-                    <span className="ml-2 text-gray-700">{g.charAt(0).toUpperCase() + g.slice(1)}</span>
+                    <span className="ml-2 text-gray-700">
+                      {g.charAt(0).toUpperCase() + g.slice(1)}
+                    </span>
                   </label>
                 ))}
               </div>
@@ -178,7 +209,11 @@ const Signup = () => {
               <div className="flex items-center space-x-4 mt-2">
                 <div className="w-24 h-24 rounded-full overflow-hidden border border-gray-300 flex items-center justify-center bg-gray-100">
                   {imagePreview ? (
-                    <img src={imagePreview} alt="Profile Preview" className="w-full h-full object-cover" />
+                    <img
+                      src={imagePreview}
+                      alt="Profile Preview"
+                      className="w-full h-full object-cover"
+                    />
                   ) : (
                     <span className="text-gray-400 text-sm">Preview</span>
                   )}
@@ -212,7 +247,9 @@ const Signup = () => {
                 onChange={handleChange}
                 required
               />
-              <p className="mt-1 text-xs text-gray-500">Must be at least 8 characters</p>
+              <p className="mt-1 text-xs text-gray-500">
+                Must be at least 8 characters
+              </p>
             </div>
 
             {/* Confirm Password */}
@@ -229,14 +266,38 @@ const Signup = () => {
             </div>
           </div>
 
-          <CustomButton type="submit" size="block" variant="primary" isLoading={isLoading}>
+          <CustomButton
+            type="submit"
+            size="block"
+            variant="primary"
+            isLoading={isLoading}
+          >
             Create account
           </CustomButton>
         </form>
 
+        <div className="relative flex items-center my-6">
+          <div className="flex-grow border-t border-gray-300" />
+          <span className="px-4 text-gray-500">Or continue with</span>
+          <div className="flex-grow border-t border-gray-300" />
+        </div>
+
+        <div className="flex justify-center">
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => toast.error("Google sign‑in failed")}
+            useOneTap
+            width="280"
+            text="signin_with"
+          />
+        </div>
+
         <div className="text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500">
+          <Link
+            href="/login"
+            className="font-medium text-blue-600 hover:text-blue-500"
+          >
             Log in
           </Link>
         </div>
