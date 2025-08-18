@@ -9,13 +9,12 @@ export default function Certificate() {
         Certification of Achievement
       </h2>
       <div className="w-full max-w-3xl">
-        <Image
+        <img
           src="/images/rainbowsky-certificate.png"
           alt="Certificate of Achievement"
           width={1200}
           height={800}
           className="w-full h-auto rounded-lg shadow-lg"
-          priority
         />
       </div>
     </div>

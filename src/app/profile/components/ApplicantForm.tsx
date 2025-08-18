@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { User, Camera } from "lucide-react";
 import { IUser } from "@/types/applicant";
 
@@ -106,11 +105,10 @@ const UserForm = ({ user, isLoading, isEdit, onSubmit }: UserFormProps) => {
       <div className="flex flex-col items-center">
         <div className="relative h-24 w-24">
           {previewImage ? (
-            <Image
+            <img
               src={previewImage}
               alt="User profile"
-              className="rounded-full object-cover"
-              fill
+              className="w-full h-full rounded-full object-cover"
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center rounded-full bg-gray-200">
@@ -141,7 +139,7 @@ const UserForm = ({ user, isLoading, isEdit, onSubmit }: UserFormProps) => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full rounded-lg border p-2"
+          className="w-full rounded-lg border p-2 border-gray-300"
           required
           placeholder={isEdit ? undefined : "Enter full name"}
         />
@@ -155,7 +153,7 @@ const UserForm = ({ user, isLoading, isEdit, onSubmit }: UserFormProps) => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full rounded-lg border p-2"
+          className="w-full rounded-lg border p-2 border-gray-300"
           required
           disabled={isEdit}
           placeholder={isEdit ? undefined : "Enter email address"}
@@ -169,7 +167,7 @@ const UserForm = ({ user, isLoading, isEdit, onSubmit }: UserFormProps) => {
           name="type"
           value={formData.type}
           onChange={handleChange}
-          className="w-full rounded-lg border p-2"
+          className="w-full rounded-lg border p-2 border-gray-300"
           required
         >
           <option value={1}>Regular User</option>
@@ -185,7 +183,7 @@ const UserForm = ({ user, isLoading, isEdit, onSubmit }: UserFormProps) => {
           name="dob"
           value={formData.dob || ""}
           onChange={handleChange}
-          className="w-full rounded-lg border p-2"
+          className="w-full rounded-lg border p-2 border-gray-300"
         />
       </div>
 
@@ -196,7 +194,7 @@ const UserForm = ({ user, isLoading, isEdit, onSubmit }: UserFormProps) => {
           name="gender"
           value={formData.gender || ""}
           onChange={handleChange}
-          className="w-full rounded-lg border p-2"
+          className="w-full rounded-lg border p-2 border-gray-300"
         >
           <option value="">Select Gender</option>
           <option value="male">Male</option>
@@ -213,13 +211,13 @@ const UserForm = ({ user, isLoading, isEdit, onSubmit }: UserFormProps) => {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full rounded-lg border p-2"
+          className="w-full rounded-lg border p-2 border-gray-300"
           placeholder={isEdit ? undefined : "Enter phone number"}
         />
       </div>
 
       {/* Verified */}
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <input
           type="checkbox"
           name="verified"
@@ -228,7 +226,7 @@ const UserForm = ({ user, isLoading, isEdit, onSubmit }: UserFormProps) => {
           className="h-4 w-4 rounded border-gray-300"
         />
         <label className="ml-2 text-sm font-medium">Verified</label>
-      </div>
+      </div> */}
 
       {/* Submit Button */}
       <div className="flex items-end justify-end pt-4">

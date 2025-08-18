@@ -22,10 +22,9 @@ export const CustomCarousel: React.FC<Props> = ({ images, startIndex = 0 }) => {
         {images.map((src, idx) => (
           <CarouselItem key={idx} className="flex items-center justify-center">
             <div className="relative h-[300px] w-full">
-              <Image
+              <img
                 src={src}
                 alt={`Preview ${idx}`}
-                fill
                 className="rounded object-contain"
               />
             </div>

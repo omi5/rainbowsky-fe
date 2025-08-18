@@ -41,7 +41,7 @@ export const ApplicantDocuments: React.FC<Props> = ({ documents }) => {
                 onOpenChange={setOpen}
               >
                 <DialogTrigger asChild>
-                  <Image
+                  <img
                     src={file.fileUrl}
                     alt={`Doc ${idx}`}
                     width={100}

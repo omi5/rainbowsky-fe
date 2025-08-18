@@ -277,7 +277,7 @@ export default function DocumentUploadForm({
                       onChange={(e) =>
                         handleTypeChange(index, e.target.value as DocumentType)
                       }
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                      className="w-full rounded-lg border p-2 border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                       // disabled={!!doc.existingDoc}
                     >
                       {documentTypes.map((type) => (

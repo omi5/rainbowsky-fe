@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import UserForm from "../../components/ApplicantForm";
 import DocumentSection from "../../components/documents/DocumentSection";
 import LoadingSpinner from "../../components/loader/LoadingSpinner";
+import Navbar from "@/app/components/HomePage/Navbar";
 
 export default function UserEditPage() {
   const { id } = useParams();
@@ -63,7 +64,8 @@ export default function UserEditPage() {
 
   return (
     <div className="flex h-screen">
-      <div className="ml-2 flex-1 overflow-y-auto p-4">
+      <Navbar />
+      <div className="ml-2 flex-1 overflow-y-auto p-4 pt-24">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-0">
           <div className="mb-6">
             <button

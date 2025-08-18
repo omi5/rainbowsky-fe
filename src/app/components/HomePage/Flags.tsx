@@ -50,14 +50,11 @@ export default function FlagsGrid({
           >
             <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-28">
               {/* next/image with fill keeps consistent size and object-cover */}
-              <Image
+              <img
                 src={f.image}
                 alt={`${f.country} flag`}
-                fill
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                 style={{ objectFit: "cover" }}
-                unoptimized // avoids needing next.config change in dev/demo
-                priority={false}
               />
 
               {/* caption overlay at bottom of the flag */}

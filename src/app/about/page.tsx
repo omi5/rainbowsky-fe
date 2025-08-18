@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../components/HomePage/Navbar";
-import BoardMembersSection from "../components/AboutPage/Board-member-section";
 import WhyUsSection from "../components/AboutPage/Why-us-Section";
-import KeyMembersSection from "../components/AboutPage/Key-menber-section";
+// import BoardMembersSection from "../components/AboutPage/Board-member-section";
+// import KeyMembersSection from "../components/AboutPage/Key-menber-section";
 import CTASection from "../components/AboutPage/Cta-section";
 import HeroSection from "../components/AboutPage/HeroSection";
 import AboutUs from "../components/AboutPage/AboutSection";
@@ -17,8 +17,8 @@ const AboutPage = () => {
       </div>
       <AboutUs />
       <WhyUsSection />
-      <BoardMembersSection />
-      <KeyMembersSection />
+      {/* <BoardMembersSection />
+      <KeyMembersSection /> */}
       <CTASection />
       <Footer />
     </main>
