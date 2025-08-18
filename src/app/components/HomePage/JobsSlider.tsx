@@ -53,7 +53,7 @@ export default function JobSlider() {
     if (totalSlides > 1) {
       const interval = setInterval(() => {
         nextSlide();
-      }, 3000);
+      }, 5000);
       return () => clearInterval(interval);
     }
   }, [totalSlides, jobs.length]);
