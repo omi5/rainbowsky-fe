@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { useAuth } from "@/app/context/authContext";
 import { Mail, Phone, User, Calendar } from "lucide-react";
 import LoadingSpinner from "./components/loader/LoadingSpinner";
@@ -160,7 +159,7 @@ export default function ApplicantPage() {
                 onClick={handleImageClick}
               >
                 {user.image ? (
-                  <Image
+                  <img
                     src={user.image}
                     alt={user.name}
                     width={128}
