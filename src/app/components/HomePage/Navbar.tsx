@@ -422,11 +422,11 @@ export default function Navbar() {
           mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-white px-4 pt-2 pb-6 space-y-2 border-t border-gray-100">
+        <div className="bg-white px-4 pt-2 pb-6 space-y-2 border-t border-gray-100 ">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className={`block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 transition-colors ${
+            className={`block px-4 py-3 text-gray-700 hover:text-blue-600 transition-colors text-2xl border-b-[1px] border-gray-400 ${
               pathname === "/" ? "text-blue-600 font-medium" : ""
             }`}
           >
@@ -435,7 +435,7 @@ export default function Navbar() {
           <Link
             href="/about"
             onClick={() => setMobileMenuOpen(false)}
-            className={`block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 transition-colors ${
+            className={`block px-4 py-3 text-gray-700 hover:text-blue-600 transition-colors text-2xl border-b-[1px] border-gray-400 ${
               pathname === "/about" ? "text-blue-600 font-medium" : ""
             }`}
           >
@@ -444,7 +444,7 @@ export default function Navbar() {
           <Link
             href="/training"
             onClick={() => setMobileMenuOpen(false)}
-            className={`block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 transition-colors ${
+            className={`block px-4 py-3  text-gray-700 hover:text-blue-600 transition-colors text-2xl border-b-[1px] border-gray-400  ${
               pathname === "/training" ? "text-blue-600 font-medium" : ""
             }`}
           >
@@ -453,7 +453,7 @@ export default function Navbar() {
           <Link
             href="/careers"
             onClick={() => setMobileMenuOpen(false)}
-            className={`block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 transition-colors ${
+            className={`block px-4 py-3  text-gray-700 hover:text-blue-600 transition-colors text-2xl border-b-[1px] border-gray-400  ${
               pathname === "/careers" ? "text-blue-600 font-medium" : ""
             }`}
           >
@@ -462,7 +462,7 @@ export default function Navbar() {
           <Link
             href="/gallery"
             onClick={() => setMobileMenuOpen(false)}
-            className={`block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 transition-colors ${
+            className={`block px-4 py-3  text-gray-700 hover:text-blue-600 transition-colors text-2xl border-b-[1px] border-gray-400  ${
               pathname === "/gallery" ? "text-blue-600 font-medium" : ""
             }`}
           >
