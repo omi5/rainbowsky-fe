@@ -37,7 +37,7 @@ export default function FlagsGrid({
 }: FlagsGridProps) {
   return (
     <section className={`w-full p-4 sm:p-6 bg-gray-50 rounded-lg ${className}`}>
-      <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4">
+      <h2 className="text-lg sm:text-xl md:text-4xl font-semibold mb-4 text-center">
         Countries we work with
       </h2>
 

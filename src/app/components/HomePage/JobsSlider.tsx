@@ -302,7 +302,7 @@ export default function JobSlider() {
   return (
     <div className="w-full bg-white py-8 md:py-16 min-h-[300px] md:min-h-[400px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-6 sm:mb-8">
           All Job Posts
         </h2>
 

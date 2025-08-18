@@ -218,7 +218,7 @@ export default function Navbar() {
             {isAuthenticated ? (
               <>
                 <Link
-                  href={`/profile/${userId}`}
+                  href={`/profile`}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block px-4 py-3 rounded-lg text-gray-700 transition-colors cursor-pointer ${
                     pathname === "/profile"

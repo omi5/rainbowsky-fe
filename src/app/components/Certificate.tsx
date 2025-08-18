@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Certificate() {
   return (
     <div className="flex flex-col items-center justify-center py-10 px-4">
-      <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
+      <h2 className="text-2xl md:text-4xl font-semibold mb-6 text-center">
         Certification of Achievement
       </h2>
       <div className="w-full max-w-3xl">
