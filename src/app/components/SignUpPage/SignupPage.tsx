@@ -4,7 +4,7 @@ import InputLabel from "../CustomComponent/InputLabel";
 import CustomInput from "../CustomComponent/CustomInput";
 import CustomButton from "../CustomComponent/CustomButton";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { googleSignIn, login, signup } from "@/services/authService";
 import { validateSignupForm } from "@/utils/auth/validation";
@@ -91,8 +91,7 @@ const Signup = () => {
       setIsLoading(false);
     }
   };
-  const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirect") || "/";
+
   const handleGoogleSuccess = async (res: CredentialResponse) => {
     if (!res.credential) {
       toast.error("Google sign‑in failed: no credential");
