@@ -442,13 +442,13 @@ export default function Navbar() {
             {t("about")}
           </Link>
           <Link
-            href="/contact"
+            href="/training"
             onClick={() => setMobileMenuOpen(false)}
             className={`block px-4 py-3 rounded-lg text-gray-700 hover:text-blue-600 transition-colors ${
-              pathname === "/contact" ? "text-blue-600 font-medium" : ""
+              pathname === "/training" ? "text-blue-600 font-medium" : ""
             }`}
           >
-            {t("contact")}
+            {t("training")}
           </Link>
           <Link
             href="/careers"
