@@ -37,7 +37,7 @@ export default function About() {
               <div className="grid grid-cols-2 divide-x divide-y divide-gray-200">
                 {/* Counter Item 1 */}
                 <div className="p-4 sm:p-6 flex flex-col items-end justify-center h-full min-h-[7rem]">
-                  <Counter target={25} label={t2("experience")} />
+                  <Counter target={12} label={t2("experience")} />
                 </div>
 
                 {/* Counter Item 2 */}
